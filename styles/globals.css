@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ─── */
+:root {
+  /* Light mode */
+  --color-surface: #FAFAF8;
+  --color-surface-elevated: #F2F0EB;
+  --color-ink: #1A1A18;
+  --color-ink-muted: #4A4A46;
+  --color-ink-faint: #8A8A84;
+  --color-border: #E4E2DB;
+  --color-accent: #5C7A62;
+  --color-accent-muted: #8FAB94;
+
+  /* Font stacks exposed as vars */
+  --font-fraunces: 'Fraunces', Georgia, serif;
+}
+
+[data-theme='dark'] {
+  --color-surface: #0F0F0E;
+  --color-surface-elevated: #1C1C1A;
+  --color-ink: #E8E6E0;
+  --color-ink-muted: #A8A69E;
+  --color-ink-faint: #6A6860;
+  --color-border: #2A2A28;
+  --color-accent: #7DAF84;
+  --color-accent-muted: #5C8A62;
+}
+
+/* ─── Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-geist-sans, system-ui, sans-serif);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-height: 100dvh;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: var(--color-accent-muted);
+  color: var(--color-surface);
+}
+
+/* ─── Focus visible ─── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-faint);
+}
+
+/* ─── Typography utilities ─── */
+.font-serif { font-family: var(--font-fraunces, Georgia, serif); }
+
+/* ─── Animated stagger utility ─── */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-up 0.4s ease-out forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
+
+/* ─── Shiki code block overrides ─── */
+pre.shiki {
+  overflow-x: auto;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  background-color: var(--color-surface-elevated) !important;
+  border: 1px solid var(--color-border);
+}
+
+pre.shiki code {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-family: var(--font-geist-mono, Menlo, monospace);
+}
+
+/* ─── Prose link underline style ─── */
+.prose a {
+  text-decoration-color: var(--color-accent-muted);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+/* ─── Horizontal rule ─── */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2.5rem 0;
+}
+
+/* ─── Keyframes (also in Tailwind config, kept here for global use) ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
