@@ -48,7 +48,7 @@ export function buildMetadata({
       type: publishedTime ? 'article' : 'website',
       ...(publishedTime && {
         publishedTime,
-        authors: authors ?? [SITE_CONFIG.author],
+        authors: authors ?? [absoluteUrl('/about')],
         tags,
       }),
       ...(image && { images: image }),

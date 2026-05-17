@@ -21,7 +21,7 @@ export default function Header() {
           <Link
             href="/"
             className="font-serif text-lg font-semibold tracking-tight text-[var(--color-ink)] transition-opacity hover:opacity-70"
-            aria-label="Thinking Out Loud — home"
+            aria-label="Thinking Out Loud, home"
           >
             thinking out loud
           </Link>

@@ -60,9 +60,10 @@ export function getPostsByCategory(category: Category): Post[] {
 }
 
 export function getRelatedPosts(currentSlug: string, category: Category, limit = 3): Post[] {
-  return getAllPosts()
-    .filter((p) => p.slug !== currentSlug && p.category === category)
-    .slice(0, limit)
+  const all = getAllPosts().filter((p) => p.slug !== currentSlug)
+  const sameCategory = all.filter((p) => p.category === category)
+  if (sameCategory.length > 0) return sameCategory.slice(0, limit)
+  return all.slice(0, 1)
 }
 
 export function getAllTags(): string[] {

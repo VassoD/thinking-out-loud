@@ -28,7 +28,6 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     description: post.excerpt,
     path: `/writing/${post.slug}`,
     publishedTime: post.date,
-    authors: ['Vasiliki'],
     tags: post.tags,
   })
 }
