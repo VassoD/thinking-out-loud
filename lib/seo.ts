@@ -32,7 +32,7 @@ export function buildMetadata({
   const fullTitle = title ? `${title} | ${SITE_CONFIG.name}` : SITE_CONFIG.title
   const desc = description ?? SITE_CONFIG.description
   const url = absoluteUrl(path)
-  const image = ogImage ?? absoluteUrl('/og-default.png')
+  const image = ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: fullTitle }] : undefined
 
   return {
     title: fullTitle,
@@ -51,14 +51,14 @@ export function buildMetadata({
         authors: authors ?? [SITE_CONFIG.author],
         tags,
       }),
-      images: [{ url: image, width: 1200, height: 630, alt: fullTitle }],
+      ...(image && { images: image }),
     },
     twitter: {
       card: 'summary_large_image',
       title: fullTitle,
       description: desc,
       creator: SITE_CONFIG.twitterHandle,
-      images: [image],
+      ...(image && { images: [image[0].url] }),
     },
     robots: {
       index: true,
