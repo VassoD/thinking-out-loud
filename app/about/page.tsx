@@ -51,7 +51,7 @@ export default function AboutPage() {
             <p>
               I started as a French Literature student in Athens. Wanted to build a game to teach children French.
               Had no idea how. So I taught myself: Python, design, front-end. That chain led to a Master&apos;s
-              in Digital Creation at Sorbonne Paris Nord and the Piscine at 42 Paris.{' '}
+              in Digital Creation at Sorbonne Paris Nord and at 42 Paris.{' '}
               <em>The non-technical background is not a detour. It is why I build differently.</em>
             </p>
 
