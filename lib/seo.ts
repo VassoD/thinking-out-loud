@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   title: 'Thinking Out Loud — by Vasiliki Doropoulou',
   description:
     'A space for thinking about engineering, UX, leadership, AI, philosophy, and the systems that shape how we build and live. By Vasiliki Doropoulou.',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vassiliki.dev',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vassi-thinking-out-loud.vercel.app',
   author: 'Vasiliki Doropoulou',
   twitterHandle: '@vasiliki',
   locale: 'en_GB',

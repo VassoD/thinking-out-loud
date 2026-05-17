@@ -31,5 +31,4 @@ next-env.d.ts
 # my assistant on this journey
 CLAUDE.md
 .claude/
-review.md
 DEVLOG.md
