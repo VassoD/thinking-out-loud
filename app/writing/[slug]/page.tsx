@@ -8,6 +8,7 @@ import { mdxComponents } from '@/components/mdx/MDXComponents'
 import PostHeader from '@/components/post/PostHeader'
 import PostBody from '@/components/post/PostBody'
 import RelatedPosts from '@/components/post/RelatedPosts'
+import SubscribeForm from '@/components/post/SubscribeForm'
 import Container from '@/components/layout/Container'
 
 interface PostPageProps {
@@ -62,6 +63,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <Container size="reading">
           <PostHeader post={post} />
           <PostBody>{content}</PostBody>
+          <SubscribeForm />
           <RelatedPosts posts={relatedPosts} />
         </Container>
       </div>
