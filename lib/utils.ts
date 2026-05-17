@@ -23,7 +23,7 @@ export function formatDateShort(dateString: string): string {
 }
 
 export function absoluteUrl(path: string): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vassiliki.dev'
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vassi-thinking-out-loud.vercel.app'
   return `${base}${path}`
 }
 

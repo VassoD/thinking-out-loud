@@ -8,9 +8,14 @@ export default function Footer() {
     <footer className="mt-24 border-t border-[var(--color-border)] py-10">
       <Container>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-[var(--color-ink-faint)]">
-            &copy; {year} Vasiliki Doropoulou
-          </p>
+          <div className="flex flex-col gap-0.5">
+            <span className="font-sans text-xl text-[var(--color-ink-muted)]" style={{letterSpacing: '-0.08em'}}>
+              VD๏r
+            </span>
+            <p className="text-xs text-[var(--color-ink-faint)]">
+              &copy; {year} Vasiliki Doropoulou
+            </p>
+          </div>
 
           <nav aria-label="Footer navigation" className="flex items-center gap-5">
             <Link

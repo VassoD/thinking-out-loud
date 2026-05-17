@@ -10,6 +10,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.105.4",
+    "@vercel/analytics": "^2.0.1",
     "clsx": "2.1.1",
     "date-fns": "3.6.0",
     "framer-motion": "11.3.8",
