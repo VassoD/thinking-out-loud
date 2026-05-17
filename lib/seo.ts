@@ -3,7 +3,7 @@ import { absoluteUrl } from './utils'
 
 export const SITE_CONFIG = {
   name: 'Thinking Out Loud',
-  title: 'Thinking Out Loud — by Vasiliki Doropoulou',
+  title: 'Thinking Out Loud, by Vasiliki Doropoulou',
   description:
     'A space for thinking about engineering, UX, leadership, AI, philosophy, and the systems that shape how we build and live. By Vasiliki Doropoulou.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vassi-thinking-out-loud.vercel.app',
@@ -29,7 +29,7 @@ export function buildMetadata({
   authors?: string[]
   tags?: string[]
 }): Metadata {
-  const fullTitle = title ? `${title} — ${SITE_CONFIG.name}` : SITE_CONFIG.title
+  const fullTitle = title ? `${title} | ${SITE_CONFIG.name}` : SITE_CONFIG.title
   const desc = description ?? SITE_CONFIG.description
   const url = absoluteUrl(path)
   const image = ogImage ?? absoluteUrl('/og-default.png')
