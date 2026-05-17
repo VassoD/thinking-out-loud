@@ -91,10 +91,12 @@ export default function AboutPage() {
             <p className="text-[var(--color-ink-muted)]">
               You can reach me at{' '}
               <a
-                href="mailto:vassidoro@gmail.com"
+                href="https://www.linkedin.com/in/vasilikidoropoulou"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[var(--color-accent)] underline underline-offset-2 decoration-[var(--color-accent-muted)] hover:decoration-[var(--color-accent)] transition-colors"
               >
-                vassidoro@gmail.com
+                LinkedIn
               </a>
               . I read everything.
             </p>
