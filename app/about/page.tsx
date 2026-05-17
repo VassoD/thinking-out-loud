@@ -26,7 +26,7 @@ export default function AboutPage() {
             </p>
 
             <p>
-              By day I lead the features squad at{' '}
+              I lead the features squad at{' '}
               <a
                 href="https://ublo.immo"
                 target="_blank"
@@ -35,9 +35,8 @@ export default function AboutPage() {
               >
                 Ublo
               </a>
-              , a proptech company building software for social housing management in France. I own the frontend,
-              lead a squad, and care equally about the code and the team conditions that produce it.
-              In parallel, I am building{' '}
+              , proptech for social housing in France. Frontend, team, and the conditions that make both work.
+              I am also building{' '}
               <a
                 href="https://inteply.com"
                 target="_blank"
@@ -46,35 +45,21 @@ export default function AboutPage() {
               >
                 Inteply
               </a>
-              {' '}as technical co-founder: a new infrastructure for newsrooms, AI-assisted and human-directed.
+              {' '}as technical co-founder: AI infrastructure for newsrooms, AI-assisted and human-directed.
             </p>
 
             <p>
-              My background is a deliberate mix. I have a Master&apos;s in Digital Creation and Interface Design
-              from Université Sorbonne Paris Nord. My thesis explored one question: can NLP measure
-              users&apos; emotional reactions during usability testing? Before that,
-              I went through the Piscine at 42 Paris, which taught me to think in C and survive on very little sleep.
-              Earlier still, I completed a Cisco engineering incubator, interned as an EU project manager in Palma
-              on an Erasmus+ program, and tutored Python to teenagers. The thread connecting all of it
-              is <em>curiosity</em> about how things work and how people experience them.
+              I started as a French Literature student in Athens. Wanted to build a game to teach children French.
+              Had no idea how. So I taught myself: Python, design, front-end. That chain led to a Master&apos;s
+              in Digital Creation at Sorbonne Paris Nord and the Piscine at 42 Paris.{' '}
+              <em>The non-technical background is not a detour. It is why I build differently.</em>
             </p>
 
             <p>
-              Over the past two years, the majority of my engineering focus has been on integrating AI
-              into real products: building AI-powered features and interfaces that make AI capabilities actually usable. Not just technically impressive.
-              The hard part is never the model. It is the product thinking around it.
-            </p>
-
-            <p>
-              I am a woman in engineering and technical leadership, which is still worth naming.
-              I think about what it means to build environments where people who have historically been
-              on the outside of these rooms can do their clearest thinking. I try to do that work actively.
-            </p>
-
-            <p>
-              This site is called <em>Thinking Out Loud</em> because that is precisely what it is.
-              Writing is how I figure out what I actually believe. Some of it will be wrong.
-              I expect the site to change as I do.
+              I am a woman in engineering and technical leadership. I have imposter syndrome: from the
+              non-linear path, from the culture I grew up in, from being one of few women in these rooms.
+              Writing is how I push back against that.{' '}
+              <em>Thinking out loud is an act of taking up space.</em>
             </p>
 
             <hr className="border-t border-[var(--color-border)] my-10" />
@@ -85,14 +70,14 @@ export default function AboutPage() {
 
             <ul className="space-y-3 pl-0 list-none">
               {[
-                ['Engineering', 'Frontend architecture, full-stack thinking, developer experience, and the craft of building software that holds up over time.'],
-                ['Leadership', 'Leading squads, building trust, making decisions with incomplete information. What it means to create conditions for good work rather than just doing the work yourself.'],
-                ['UX & Product', 'The invisible contract between builder and user. Why technically correct software is not always human software. Product thinking as a form of care.'],
-                ['AI', 'What it actually means to build with LLMs inside real products. And, separately, what AI reveals about human creativity, intelligence, and authorship.'],
-                ['Philosophy', 'Ideas that have changed how I see. Aristotle features heavily. So does systems thinking. Occasionally Stoicism, occasionally something stranger.'],
-                ['Growth', 'What changes and what does not. Personal and professional. The longer game.'],
-                ['Mental Models', 'Frameworks for recognising patterns across engineering, organisations, and human behaviour.'],
-                ['Notes', 'Shorter, less resolved thoughts. Things I am still working out.'],
+                ['Engineering', 'Frontend architecture, developer experience, software that holds up.'],
+                ['Leadership', 'Decisions with incomplete information. Conditions for good work, not just the work.'],
+                ['UX & Product', 'The contract between builder and user. Correct software is not always human software.'],
+                ['AI', 'Building with LLMs in real products. What AI reveals about creativity and authorship.'],
+                ['Philosophy', 'Ideas that changed how I see. Aristotle features heavily. Occasionally Stoicism, occasionally something stranger.'],
+                ['Growth', 'What changes and what does not. The longer game.'],
+                ['Mental Models', 'Patterns across engineering, organisations, and behaviour.'],
+                ['Notes', 'Less resolved thoughts. Still working them out.'],
               ].map(([title, desc]) => (
                 <li key={title} className="grid gap-1 sm:grid-cols-[160px_1fr]">
                   <span className="font-medium text-[var(--color-ink)]">{title}</span>
