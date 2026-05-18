@@ -84,12 +84,6 @@ export default function DraftsPage() {
           new capture
         </Link>
         <button
-          onClick={fetchCaptures}
-          className="flex h-11 items-center px-3 text-sm text-[var(--color-ink-faint)] underline underline-offset-2 hover:text-[var(--color-ink-muted)]"
-        >
-          refresh
-        </button>
-        <button
           onClick={handleSignOut}
           className="flex h-11 items-center px-3 text-sm text-[var(--color-ink-faint)] underline underline-offset-2 hover:text-[var(--color-ink-muted)]"
         >
