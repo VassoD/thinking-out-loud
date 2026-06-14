@@ -1,37 +1,53 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { supabase } from '@/lib/supabase'
+import { requireAdmin } from '@/lib/require-admin'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  const token = req.headers.get('authorization')?.replace('Bearer ', '')
-  if (!token) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const auth = await requireAdmin(req)
+  if (auth instanceof NextResponse) return auth
 
-  const { data: { user }, error: authError } = await supabase.auth.getUser(token)
-  if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-
-  const { slug, title, excerpt } = await req.json().catch(() => ({}))
+  const { slug, title, excerpt, test } = await req.json().catch(() => ({}))
   if (!slug || !title) return NextResponse.json({ error: 'Missing slug or title.' }, { status: 400 })
 
-  const { data: subscribers, error: dbError } = await supabase
-    .from('subscribers')
-    .select('email')
-    .eq('confirmed', true)
+  let recipients: { email: string }[]
+  const isTest = test === true
 
-  if (dbError) return NextResponse.json({ error: 'Could not fetch subscribers.' }, { status: 500 })
-  if (!subscribers?.length) return NextResponse.json({ ok: true, sent: 0 })
+  if (isTest) {
+    const testEmail = process.env.NEWSLETTER_TEST_EMAIL
+    if (!testEmail) {
+      return NextResponse.json({ error: 'Test email not configured.' }, { status: 500 })
+    }
+    recipients = [{ email: testEmail }]
+  } else {
+    const { data: subscribers, error: dbError } = await supabase
+      .from('subscribers')
+      .select('email')
+      .eq('confirmed', true)
+
+    if (dbError) return NextResponse.json({ error: 'Could not fetch subscribers.' }, { status: 500 })
+    if (!subscribers?.length) return NextResponse.json({ ok: true, sent: 0 })
+    recipients = subscribers
+  }
 
   const postUrl = `https://vassi.fyi/writing/${slug}`
 
+  if (isTest && recipients.length !== 1) {
+    return NextResponse.json({ error: 'Test send blocked.' }, { status: 400 })
+  }
+
+  const subject = isTest ? `[TEST] ${title}` : title
+
   const { error: sendError } = await resend.batch.send(
-    subscribers.map(({ email }) => {
+    recipients.map(({ email }) => {
       const token = Buffer.from(email).toString('base64url')
       const unsubscribeUrl = `https://vassi.fyi/api/unsubscribe?e=${token}`
       return {
         from: process.env.RESEND_FROM_EMAIL!,
         to: email,
-        subject: title,
+        subject,
         headers: {
           'List-Unsubscribe': `<${unsubscribeUrl}>`,
           'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
@@ -59,5 +75,5 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: 'Could not send emails.' }, { status: 500 })
   }
 
-  return NextResponse.json({ ok: true, sent: subscribers.length })
+  return NextResponse.json({ ok: true, sent: recipients.length, test: isTest })
 }
