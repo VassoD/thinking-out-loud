@@ -15,8 +15,6 @@ interface PostSummary {
 type SendState = 'idle' | 'loading' | 'sent' | 'error'
 type SendMode = 'all' | 'test'
 
-const TEST_EMAIL = 'bacwdor@gmail.com'
-
 export default function NewsletterPage() {
   const { user, loading } = useAuth()
   const [posts, setPosts] = useState<PostSummary[]>([])
@@ -61,7 +59,7 @@ export default function NewsletterPage() {
         slug: post.slug,
         title: post.title,
         excerpt: post.excerpt,
-        ...(mode === 'test' ? { testEmail: TEST_EMAIL } : {}),
+        ...(mode === 'test' ? { test: true } : {}),
       }),
     })
     const json = await res.json()
