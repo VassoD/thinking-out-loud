@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff } from 'lucide-react'
 import { supabaseBrowser } from '@/lib/supabase-browser'
+import { isAdmin } from '@/lib/admin'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -18,11 +19,18 @@ export default function LoginPage() {
     setErrorMsg('')
     setStatus('loading')
 
-    const { error } = await supabaseBrowser.auth.signInWithPassword({ email, password })
+    const { data, error } = await supabaseBrowser.auth.signInWithPassword({ email, password })
 
     if (error) {
       setStatus('error')
       setErrorMsg(error.message)
+      return
+    }
+
+    if (!(await isAdmin(supabaseBrowser, data.user?.id))) {
+      await supabaseBrowser.auth.signOut()
+      setStatus('error')
+      setErrorMsg('Not authorized.')
       return
     }
 
