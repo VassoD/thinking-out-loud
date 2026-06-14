@@ -13,12 +13,16 @@ interface PostSummary {
 }
 
 type SendState = 'idle' | 'loading' | 'sent' | 'error'
+type SendMode = 'all' | 'test'
+
+const TEST_EMAIL = 'bacwdor@gmail.com'
 
 export default function NewsletterPage() {
   const { user, loading } = useAuth()
   const [posts, setPosts] = useState<PostSummary[]>([])
   const [fetching, setFetching] = useState(true)
   const [sendStates, setSendStates] = useState<Record<string, SendState>>({})
+  const [testSendStates, setTestSendStates] = useState<Record<string, SendState>>({})
   const [sentCounts, setSentCounts] = useState<Record<string, number>>({})
 
   const fetchPosts = useCallback(async () => {
@@ -37,12 +41,13 @@ export default function NewsletterPage() {
     if (!loading && user) fetchPosts()
   }, [loading, user, fetchPosts])
 
-  const handleSend = async (post: PostSummary) => {
-    setSendStates((s) => ({ ...s, [post.slug]: 'loading' }))
+  const handleSend = async (post: PostSummary, mode: SendMode) => {
+    const setState = mode === 'test' ? setTestSendStates : setSendStates
+    setState((s) => ({ ...s, [post.slug]: 'loading' }))
 
     const { data: { session } } = await supabaseBrowser.auth.getSession()
     if (!session) {
-      setSendStates((s) => ({ ...s, [post.slug]: 'error' }))
+      setState((s) => ({ ...s, [post.slug]: 'error' }))
       return
     }
 
@@ -52,15 +57,20 @@ export default function NewsletterPage() {
         'content-type': 'application/json',
         authorization: `Bearer ${session.access_token}`,
       },
-      body: JSON.stringify({ slug: post.slug, title: post.title, excerpt: post.excerpt }),
+      body: JSON.stringify({
+        slug: post.slug,
+        title: post.title,
+        excerpt: post.excerpt,
+        ...(mode === 'test' ? { testEmail: TEST_EMAIL } : {}),
+      }),
     })
     const json = await res.json()
 
     if (res.ok) {
-      setSendStates((s) => ({ ...s, [post.slug]: 'sent' }))
-      setSentCounts((s) => ({ ...s, [post.slug]: json.sent }))
+      setState((s) => ({ ...s, [post.slug]: 'sent' }))
+      if (mode === 'all') setSentCounts((s) => ({ ...s, [post.slug]: json.sent }))
     } else {
-      setSendStates((s) => ({ ...s, [post.slug]: 'error' }))
+      setState((s) => ({ ...s, [post.slug]: 'error' }))
     }
   }
 
@@ -81,6 +91,7 @@ export default function NewsletterPage() {
         <ul className="flex flex-col divide-y divide-[var(--color-border)]">
           {posts.map((post) => {
             const state = sendStates[post.slug] ?? 'idle'
+            const testState = testSendStates[post.slug] ?? 'idle'
             return (
               <li key={post.slug} className="flex items-start justify-between gap-4 py-5">
                 <div className="min-w-0">
@@ -89,20 +100,33 @@ export default function NewsletterPage() {
                     {format(new Date(post.date), 'd MMM yyyy')}
                   </p>
                 </div>
-                <div className="shrink-0 text-right">
+                <div className="flex shrink-0 flex-col items-end gap-1">
                   {state === 'sent' ? (
                     <span className="text-xs text-[var(--color-accent)]">
                       sent to {sentCounts[post.slug]}
                     </span>
                   ) : state === 'error' ? (
-                    <span className="text-xs text-red-500">failed</span>
+                    <span className="text-xs text-red-500">send failed</span>
                   ) : (
                     <button
-                      onClick={() => handleSend(post)}
+                      onClick={() => handleSend(post, 'all')}
                       disabled={state === 'loading'}
                       className="text-sm text-[var(--color-ink-faint)] underline underline-offset-2 hover:text-[var(--color-accent)] disabled:opacity-40"
                     >
-                      {state === 'loading' ? 'sending...' : 'send'}
+                      {state === 'loading' ? 'sending...' : 'send all'}
+                    </button>
+                  )}
+                  {testState === 'sent' ? (
+                    <span className="text-xs text-[var(--color-accent)]">test sent</span>
+                  ) : testState === 'error' ? (
+                    <span className="text-xs text-red-500">test failed</span>
+                  ) : (
+                    <button
+                      onClick={() => handleSend(post, 'test')}
+                      disabled={testState === 'loading'}
+                      className="text-xs text-[var(--color-ink-faint)] underline underline-offset-2 hover:text-[var(--color-accent)] disabled:opacity-40"
+                    >
+                      {testState === 'loading' ? 'sending...' : `test`}
                     </button>
                   )}
                 </div>
