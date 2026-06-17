@@ -15,8 +15,6 @@ const SLUG_TO_CATEGORY: Record<string, Category> = {
   ai: 'AI',
   philosophy: 'Philosophy',
   growth: 'Growth',
-  'mental-models': 'Mental Models',
-  notes: 'Notes',
 }
 
 const VALID_SLUGS = Object.keys(SLUG_TO_CATEGORY)

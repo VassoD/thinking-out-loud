@@ -73,10 +73,10 @@ export default function AboutPage() {
                 ['Engineering', 'Frontend architecture, developer experience, software that holds up.'],
                 ['Leadership', 'Decisions with incomplete information. Conditions for good work, not just the work.'],
                 ['UX & Product', 'The contract between builder and user. Correct software is not always human software.'],
-                ['AI', 'Building with LLMs in real products. What AI reveals about creativity and authorship.'],
                 ['Philosophy', 'Ideas that changed how I see. Aristotle features heavily. Occasionally Stoicism, occasionally something stranger.'],
                 ['Growth', 'What changes and what does not. The longer game.'],
                 ['Mental Models', 'Patterns across engineering, organisations, and behaviour.'],
+                ['AI', 'Building with LLMs in real products. What AI reveals about creativity and authorship.'],
                 ['Notes', 'Less resolved thoughts. Still working them out.'],
               ].map(([title, desc]) => (
                 <li key={title} className="grid gap-1 sm:grid-cols-[160px_1fr]">

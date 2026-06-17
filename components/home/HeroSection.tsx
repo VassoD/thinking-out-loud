@@ -11,7 +11,7 @@ export default function HeroSection() {
 
           <p className="text-lg leading-relaxed text-[var(--color-ink-muted)] max-w-xl">
             A place to document what I am learning, what I am building, and what I am still figuring out.
-            Engineering, UX, AI, leadership, philosophy and the occasional realisation I want to remember before it disappears.
+            Engineering, UX, leadership, philosophy and the occasional realisation I want to remember before it disappears.
           </p>
         </div>
       </Container>
