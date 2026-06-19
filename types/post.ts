@@ -5,8 +5,6 @@ export const CATEGORIES = [
   'AI',
   'Philosophy',
   'Growth',
-  'Mental Models',
-  'Notes',
 ] as const
 
 export type Category = (typeof CATEGORIES)[number]

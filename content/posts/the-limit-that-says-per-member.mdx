@@ -1,0 +1,39 @@
+---
+title: "The Limit That Says Per Member"
+excerpt: "One user blew past what the cap implied. The label and the behavior did not match."
+date: "2026-06-19"
+category: "UX & Product"
+tags: ["cursor", "dark-patterns", "ai"]
+featured: false
+published: true
+---
+
+I took over Cursor admin recently. They wanted someone to own the company's AI tooling.
+
+The spend limit was already set: a per-member cap, multiplied by seat count. Standard admin hygiene for a dev team.
+
+Then one member ran up on-demand charges alone. Far more than their share. Nearly the whole budget.
+
+---
+
+The UI said "per member." They read that as each person stops at their cap. That is the natural reading.
+
+![Cursor team spend limit modal showing a fixed team limit with a "$100 per member" label beside the total](/images/posts/cursor-spend-limit.png)
+
+Support clarified: the label is math, not enforcement. Per-member amount times seats equals one shared pool. Any single user can burn the whole thing before anyone gets blocked.
+
+Per-user hard caps existed. Cursor told me they were deprecated on self-serve Team plans on December 5, 2025. Enterprise only now.
+
+*The product looked safer for budget control than it was.*
+
+---
+
+Is this a dark pattern? Yes. The label creates a false affordance. The real behavior lives in small print below. Alerts notify you. They do not stop anyone. Turning off on-demand entirely is the only hard brake on self-serve.
+
+---
+
+I turned off on-demand while figuring out what to do next.
+
+I build interfaces for a living. I know what "per member" implies. Cursor knows too.
+
+The limit that says per member does not limit per member.

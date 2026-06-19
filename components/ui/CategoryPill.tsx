@@ -15,8 +15,6 @@ const CATEGORY_SLUG_MAP: Record<Category, string> = {
   AI: 'ai',
   Philosophy: 'philosophy',
   Growth: 'growth',
-  'Mental Models': 'mental-models',
-  Notes: 'notes',
 }
 
 const pillClass =

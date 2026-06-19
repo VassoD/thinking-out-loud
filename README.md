@@ -35,7 +35,7 @@ published: true
 Your content here.
 ```
 
-Available categories: `Engineering`, `Leadership`, `UX & Product`, `AI`, `Philosophy`, `Growth`, `Mental Models`, `Notes`.
+Available categories: `Engineering`, `Leadership`, `UX & Product`, `AI`, `Philosophy`, `Growth`.
 
 Set `published: false` to draft without it appearing on the site.
 
