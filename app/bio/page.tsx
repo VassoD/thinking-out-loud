@@ -27,9 +27,9 @@ const EXPERIENCE = [
     company: 'Ublo',
     url: 'https://ublo.immo',
     period: 'Mar 2023 – Present',
-    description: 'Promoted to Squad Lead in March 2026. Leading the features squad across engineering, design, and product at a proptech SaaS covering rentals, tenant workflows, invoicing, and real estate operations.',
+    description: 'Promoted to Squad Lead in March 2026. Leading the features squad (frontend, backend, design, PM) at a proptech SaaS covering rentals, tenant workflows, invoicing, and real estate operations.',
     highlights: [
-      { label: 'Core product features spanning the full rental lifecycle', items: ['Rental contract e-sign via PandaDoc with real-time status updates (GraphQL SSE)', 'Invoicing: credit notes, refunds, PDF generation, lock/delete flows', 'Tenant portal with DPO configuration', 'Balance journal and accounting operations', 'Platform settings architecture overhaul'] },
+      'Own the frontend of core product features (rental contracts with PandaDoc e-sign and GraphQL SSE, refunds, entity categories, tenant portal..)',
       'Platform-wide migrations: REST to GraphQL, Cypress to Playwright, Typesense search integration',
       'Internal UIKit: Storybook-based component library with design system foundations',
       'Domain logic refactored into reusable providers, hooks, schemas, and GraphQL layers',
@@ -146,32 +146,12 @@ export default function BioPage() {
                     </div>
                     <p className="text-[var(--color-ink-muted)] mb-3 text-[0.9375rem]">{role.description}</p>
                     <ul className="space-y-1.5 pl-0 list-none">
-                      {role.highlights.map((item) => {
-                        if (typeof item === 'string') {
-                          return (
-                            <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
-                              <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
-                              {item}
-                            </li>
-                          )
-                        }
-                        return (
-                          <li key={item.label}>
-                            <div className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
-                              <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
-                              {item.label}
-                            </div>
-                            <ul className="mt-1.5 space-y-1 pl-6 list-none">
-                              {item.items.map((sub) => (
-                                <li key={sub} className="flex gap-2.5 text-[0.875rem] text-[var(--color-ink-muted)]">
-                                  <span className="mt-[0.6em] w-1 h-1 rounded-full border border-[var(--color-accent)] shrink-0" />
-                                  {sub}
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                        )
-                      })}
+                      {role.highlights.map((item) => (
+                        <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
+                          <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
+                          {item}
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 ))}
