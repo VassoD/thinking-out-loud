@@ -29,10 +29,11 @@ const EXPERIENCE = [
     period: 'Mar 2023 – Present',
     description: 'Promoted to Squad Lead in March 2026. Leading the features squad across engineering, design, and product at a proptech SaaS covering rentals, tenant workflows, invoicing, and real estate operations.',
     highlights: [
-      'Core product features spanning the full rental lifecycle',
+      { label: 'Core product features spanning the full rental lifecycle', items: ['Rental contract e-sign via PandaDoc with real-time status updates (GraphQL SSE)', 'Invoicing: credit notes, refunds, PDF generation, lock/delete flows', 'Tenant portal with DPO configuration', 'Balance journal and accounting operations', 'Platform settings architecture overhaul'] },
       'Platform-wide migrations: REST to GraphQL, Cypress to Playwright, Typesense search integration',
       'Internal UIKit: Storybook-based component library with design system foundations',
       'Domain logic refactored into reusable providers, hooks, schemas, and GraphQL layers',
+      'Leading AI tooling transition: internal survey across 29 team members revealed fragmented adoption and a shared pain point — re-explaining Ublo context in every prompt. Standardizing on Claude and Cursor, and designing an MCP server to expose platform APIs and domain knowledge to AI agents so context travels with the tool (in progress)',
     ],
   },
 ]
@@ -40,7 +41,7 @@ const EXPERIENCE = [
 const SKILLS = [
   {
     area: 'Frontend',
-    items: 'React, Next.js, TypeScript, Tailwind CSS, GraphQL, Styled Components, Storybook, Design Systems, localization',
+    items: 'React, Next.js, TypeScript, Tailwind CSS, GraphQL, Styled Components, Storybook, Figma, Design Systems, localization',
   },
   {
     area: 'Backend',
@@ -53,6 +54,10 @@ const SKILLS = [
   {
     area: 'Product',
     items: 'Multi-step workflow design, human-AI collaboration patterns, UX research, conversational UI, cross-functional delivery',
+  },
+  {
+    area: 'Tooling',
+    items: 'Claude Code, Claude Design, v0, Figma',
   },
 ]
 
@@ -141,12 +146,32 @@ export default function BioPage() {
                     </div>
                     <p className="text-[var(--color-ink-muted)] mb-3 text-[0.9375rem]">{role.description}</p>
                     <ul className="space-y-1.5 pl-0 list-none">
-                      {role.highlights.map((item) => (
-                        <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
-                          <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
-                          {item}
-                        </li>
-                      ))}
+                      {role.highlights.map((item) => {
+                        if (typeof item === 'string') {
+                          return (
+                            <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
+                              <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
+                              {item}
+                            </li>
+                          )
+                        }
+                        return (
+                          <li key={item.label}>
+                            <div className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
+                              <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
+                              {item.label}
+                            </div>
+                            <ul className="mt-1.5 space-y-1 pl-6 list-none">
+                              {item.items.map((sub) => (
+                                <li key={sub} className="flex gap-2.5 text-[0.875rem] text-[var(--color-ink-muted)]">
+                                  <span className="mt-[0.6em] w-1 h-1 rounded-full border border-[var(--color-accent)] shrink-0" />
+                                  {sub}
+                                </li>
+                              ))}
+                            </ul>
+                          </li>
+                        )
+                      })}
                     </ul>
                   </div>
                 ))}
