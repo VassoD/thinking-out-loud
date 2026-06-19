@@ -13,7 +13,7 @@ export default function CapturePage() {
   const { user, loading } = useAuth()
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const [category, setCategory] = useState<Category>('Notes')
+  const [category, setCategory] = useState<Category>('Engineering')
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
