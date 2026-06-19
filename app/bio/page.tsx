@@ -33,7 +33,7 @@ const EXPERIENCE = [
       'Platform-wide migrations: REST to GraphQL, Cypress to Playwright, Typesense search integration',
       'Internal UIKit: Storybook-based component library with design system foundations',
       'Domain logic refactored into reusable providers, hooks, schemas, and GraphQL layers',
-      'Leading AI tooling transition: internal survey across 29 team members revealed fragmented adoption and a shared pain point — re-explaining Ublo context in every prompt. Standardizing on Claude and Cursor, and designing an MCP server to expose platform APIs and domain knowledge to AI agents so context travels with the tool (in progress)',
+      'Leading AI tooling transition: internal survey across 29 team members revealed fragmented adoption and a shared pain point — re-explaining Ublo context in every prompt. Designing an MCP server to expose platform APIs and domain knowledge to AI agents so context travels with the tool (in progress)',
     ],
   },
 ]
