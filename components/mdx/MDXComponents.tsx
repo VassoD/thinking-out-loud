@@ -1,7 +1,20 @@
 import type { MDXComponents } from 'mdx/types'
 import { cn } from '@/lib/utils'
+import { StepperDemo } from './StepperDemo'
 
 export const mdxComponents: MDXComponents = {
+  StepperDemo,
+  img: ({ className, alt = '', ...props }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      alt={alt}
+      className={cn(
+        'block mx-auto my-8 h-auto w-auto max-w-xs rounded-lg border border-[var(--color-border)]',
+        className
+      )}
+      {...props}
+    />
+  ),
   h1: ({ className, ...props }) => (
     <h1
       className={cn('font-serif text-4xl font-semibold tracking-tight leading-tight mt-0 mb-6', className)}
