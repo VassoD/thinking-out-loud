@@ -1,6 +1,5 @@
 'use client'
-
-export default function PrintButton(): JSX.Element {
+function PrintButton(): JSX.Element {
   return (
     <button
       onClick={() => window.print()}

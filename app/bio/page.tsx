@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Container from '@/components/layout/Container'
-import PrintButton from '@/components/ui/PrintButton'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = buildMetadata({
@@ -88,17 +87,12 @@ export default function BioPage() {
       <Container size="reading">
         <article>
           <header className="mb-12 print:mb-2">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl print:text-xl">
-                  Vasiliki Doropoulou
-                </h1>
-                <p className="mt-3 text-[var(--color-ink-muted)] text-sm tracking-wide uppercase print:mt-0.5">
-                  Product Engineer · Paris, France
-                </p>
-              </div>
-              <PrintButton />
-            </div>
+            <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl print:text-xl">
+              Vasiliki Doropoulou
+            </h1>
+            <p className="mt-3 text-[var(--color-ink-muted)] text-sm tracking-wide uppercase print:mt-0.5">
+              Product Engineer · Paris, France
+            </p>
           </header>
 
           <div className="space-y-10 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)] print:space-y-2 print:text-xs print:leading-snug">
