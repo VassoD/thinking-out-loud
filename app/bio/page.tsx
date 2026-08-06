@@ -104,7 +104,7 @@ export default function BioPage() {
           <div className="space-y-10 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)] print:space-y-2 print:text-xs print:leading-snug">
 
             <p>
-              Full-stack engineer with a strong front-end and UX focus. I build end-to-end product features
+              Full-stack engineer with a strong product and UX focus. I build end-to-end product features
               in fast-moving environments, lead a feature squad at{' '}
               <a
                 href="https://ublo.immo"
