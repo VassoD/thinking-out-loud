@@ -139,3 +139,38 @@ hr {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* ─── Print ─── */
+@media print {
+  @page {
+    margin: 1.5cm 2cm;
+  }
+
+  /* Force light theme in print regardless of user preference */
+  :root,
+  [data-theme='dark'] {
+    --color-surface: #FAFAF8;
+    --color-surface-elevated: #F2F0EB;
+    --color-ink: #1A1A18;
+    --color-ink-muted: #4A4A46;
+    --color-ink-faint: #8A8A84;
+    --color-border: #E4E2DB;
+    --color-accent: #5C7A62;
+    --color-accent-muted: #8FAB94;
+  }
+
+  body {
+    background: white;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  hr {
+    margin: 0.35rem 0;
+  }
+
+  a {
+    color: var(--color-ink) !important;
+    text-decoration: none !important;
+  }
+}

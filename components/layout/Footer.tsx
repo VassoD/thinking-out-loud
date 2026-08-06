@@ -5,7 +5,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="mt-24 border-t border-[var(--color-border)] py-10">
+    <footer className="mt-24 border-t border-[var(--color-border)] py-10 print:hidden">
       <Container>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-0.5">
@@ -29,6 +29,12 @@ export default function Footer() {
               className="text-sm text-[var(--color-ink-faint)] transition-colors hover:text-[var(--color-ink)]"
             >
               About
+            </Link>
+            <Link
+              href="/bio"
+              className="text-sm text-[var(--color-ink-faint)] transition-colors hover:text-[var(--color-ink)]"
+            >
+              Bio
             </Link>
             <Link
               href="/rss.xml"

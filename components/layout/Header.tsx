@@ -15,7 +15,7 @@ export default function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)] backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)] backdrop-blur-sm print:hidden">
       <Container>
         <div className="flex h-14 items-center justify-between">
           <Link
