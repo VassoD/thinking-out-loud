@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Container from '@/components/layout/Container'
+import PrintButton from '@/components/ui/PrintButton'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = buildMetadata({
@@ -9,19 +10,6 @@ export const metadata: Metadata = buildMetadata({
 })
 
 const EXPERIENCE = [
-  {
-    title: 'Technical Co-Founder',
-    company: 'Inteply',
-    url: 'https://inteply.com',
-    period: 'Feb 2025 – Present',
-    description: 'Building a production AI research platform for journalists and editorial teams. Orchestrates multi-provider LLMs, RAG pipelines, and external APIs to automate news discovery, source cross-referencing, and editorial content generation.',
-    highlights: [
-      'Multi-step RAG system across 6 core services: search, scraping, fact extraction, cross-referencing, structured generation',
-      'Hallucination-reduction logic using controlled inputs, strict output schemas, and AI-as-judge validation',
-      'Completion agent that stops processing when information is sufficient, cutting unnecessary API usage',
-      'Full production infrastructure: auth, RBAC, billing, admin dashboard, cron workflows',
-    ],
-  },
   {
     title: 'Squad Lead / Front-End Engineer',
     company: 'Ublo',
@@ -33,7 +21,20 @@ const EXPERIENCE = [
       'Platform-wide migrations: REST to GraphQL, Cypress to Playwright, Typesense search integration',
       'Internal UIKit: Storybook-based component library with design system foundations',
       'Domain logic refactored into reusable providers, hooks, schemas, and GraphQL layers',
-      'Leading AI tooling transition: internal survey across 29 team members revealed fragmented adoption and a shared pain point — re-explaining Ublo context in every prompt. Designing an MCP server to expose platform APIs and domain knowledge to AI agents so context travels with the tool (in progress)',
+      'Leading AI tooling transition: internal survey across 29 team members revealed fragmented adoption and a shared pain point: re-explaining Ublo context in every prompt.',
+    ],
+  },
+  {
+    title: 'Technical Co-Founder',
+    company: 'Inteply',
+    url: 'https://inteply.com',
+    period: 'Feb 2025 – Present',
+    description: 'Building a production AI research platform for journalists and editorial teams. Orchestrates multi-provider LLMs, RAG pipelines, and external APIs to automate news discovery, source cross-referencing, and editorial content generation.',
+    highlights: [
+      'Multi-step RAG system across 6 core services: search, scraping, fact extraction, cross-referencing, structured generation',
+      'Hallucination-reduction logic using controlled inputs, strict output schemas, and AI-as-judge validation',
+      'Completion agent that stops processing when information is sufficient, cutting unnecessary API usage',
+      'Full production infrastructure: auth, RBAC, billing, admin dashboard, cron workflows',
     ],
   },
 ]
@@ -83,19 +84,24 @@ const EDUCATION = [
 
 export default function BioPage() {
   return (
-    <div className="py-16">
+    <div className="py-16 print:py-0">
       <Container size="reading">
         <article>
-          <header className="mb-12">
-            <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl">
-              Vasiliki Doropoulou
-            </h1>
-            <p className="mt-3 text-[var(--color-ink-muted)] text-sm tracking-wide uppercase">
-              Product Engineer · Paris, France
-            </p>
+          <header className="mb-12 print:mb-2">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl print:text-xl">
+                  Vasiliki Doropoulou
+                </h1>
+                <p className="mt-3 text-[var(--color-ink-muted)] text-sm tracking-wide uppercase print:mt-0.5">
+                  Product Engineer · Paris, France
+                </p>
+              </div>
+              <PrintButton />
+            </div>
           </header>
 
-          <div className="space-y-10 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)]">
+          <div className="space-y-10 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)] print:space-y-2 print:text-xs print:leading-snug">
 
             <p>
               Full-stack engineer with a strong front-end and UX focus. I build end-to-end product features
@@ -123,13 +129,13 @@ export default function BioPage() {
             <hr className="border-t border-[var(--color-border)]" />
 
             <section>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-8">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-8 print:text-sm print:mb-1">
                 Experience
               </h2>
-              <div className="space-y-10">
+              <div className="space-y-10 print:space-y-3">
                 {EXPERIENCE.map((role) => (
-                  <div key={role.company}>
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                  <div key={role.company} className="print:break-inside-avoid">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2 print:mb-0.5">
                       <div>
                         <span className="font-semibold text-[var(--color-ink)]">{role.title}</span>
                         {' · '}
@@ -144,10 +150,10 @@ export default function BioPage() {
                       </div>
                       <span className="text-sm text-[var(--color-ink-muted)] shrink-0">{role.period}</span>
                     </div>
-                    <p className="text-[var(--color-ink-muted)] mb-3 text-[0.9375rem]">{role.description}</p>
-                    <ul className="space-y-1.5 pl-0 list-none">
+                    <p className="text-[var(--color-ink-muted)] mb-3 text-[0.9375rem] print:mb-1">{role.description}</p>
+                    <ul className="space-y-1.5 pl-0 list-none print:space-y-0.5">
                       {role.highlights.map((item) => (
-                        <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
+                        <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)] print:gap-1.5">
                           <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
                           {item}
                         </li>
@@ -158,13 +164,13 @@ export default function BioPage() {
               </div>
             </section>
 
-            <hr className="border-t border-[var(--color-border)]" />
+            <hr className="border-t border-[var(--color-border)] print:hidden" />
 
-            <section>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6">
+            <section className="print:break-before-page">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-sm print:mb-1">
                 Skills
               </h2>
-              <ul className="space-y-3 pl-0 list-none">
+              <ul className="space-y-3 pl-0 list-none print:space-y-0.5">
                 {SKILLS.map(({ area, items }) => (
                   <li key={area} className="grid gap-1 sm:grid-cols-[130px_1fr]">
                     <span className="font-medium text-[var(--color-ink)]">{area}</span>
@@ -177,10 +183,10 @@ export default function BioPage() {
             <hr className="border-t border-[var(--color-border)]" />
 
             <section>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-sm print:mb-1">
                 Education
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-6 print:space-y-1">
                 {EDUCATION.map((edu) => (
                   <div key={edu.degree}>
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
@@ -199,12 +205,12 @@ export default function BioPage() {
             <hr className="border-t border-[var(--color-border)]" />
 
             <section>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-sm print:mb-1">
                 Training
               </h2>
-              <ul className="space-y-2 pl-0 list-none">
+              <ul className="space-y-2 pl-0 list-none print:space-y-0.5">
                 {TRAINING.map((item) => (
-                  <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)]">
+                  <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)] print:gap-1.5">
                     <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
                     {item}
                   </li>
