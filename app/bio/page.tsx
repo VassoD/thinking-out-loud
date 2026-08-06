@@ -218,7 +218,7 @@ export default function BioPage() {
               {[
                 { label: 'LinkedIn', href: 'https://linkedin.com/in/vasilikidoropoulou' },
                 { label: 'GitHub', href: 'https://github.com/VassoD' },
-                { label: 'vassidoro@gmail.com', href: 'mailto:vassidoro@gmail.com' },
+                { label: 'vkdoropoulou@gmail.com', href: 'mailto:vkdoropoulou@gmail.com' },
               ].map(({ label, href }) => (
                 <a
                   key={label}
