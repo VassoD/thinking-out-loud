@@ -1,10 +1,18 @@
 'use client'
-function PrintButton(): JSX.Element {
+
+import { Download } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+export default function PrintButton() {
   return (
     <button
       onClick={() => window.print()}
-      className="print:hidden inline-flex items-center gap-1.5 text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors border border-[var(--color-border)] rounded px-3 py-1.5"
+      className={cn(
+        'print:hidden inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-3.5 py-2 text-sm',
+        'text-[var(--color-ink-muted)] transition-colors hover:text-[var(--color-ink)] hover:bg-[var(--color-surface-elevated)]'
+      )}
     >
+      <Download size={15} strokeWidth={1.5} />
       Download PDF
     </button>
   )

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Container from '@/components/layout/Container'
+import PrintButton from '@/components/ui/PrintButton'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = buildMetadata({
@@ -30,7 +31,7 @@ const EXPERIENCE = [
     period: 'Feb 2025 – Present',
     description: 'Building a production AI research platform for journalists and editorial teams. Orchestrates multi-provider LLMs, RAG pipelines, and external APIs to automate news discovery, source cross-referencing, and editorial content generation.',
     highlights: [
-      'Multi-step RAG system across 6 core services: search, scraping, fact extraction, cross-referencing, structured generation',
+      'Multi-step RAG system across 5 core services: search, scraping, fact extraction, cross-referencing, structured generation',
       'Hallucination-reduction logic using controlled inputs, strict output schemas, and AI-as-judge validation',
       'Completion agent that stops processing when information is sufficient, cutting unnecessary API usage',
       'Full production infrastructure: auth, RBAC, billing, admin dashboard, cron workflows',
@@ -86,13 +87,16 @@ export default function BioPage() {
     <div className="py-16 print:py-0">
       <Container size="reading">
         <article>
-          <header className="mb-12 print:mb-2">
-            <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl print:text-xl">
-              Vasiliki Doropoulou
-            </h1>
-            <p className="mt-3 text-[var(--color-ink-muted)] text-sm tracking-wide uppercase print:mt-0.5">
-              Product Engineer · Paris, France
-            </p>
+          <header className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end print:mb-2">
+            <div>
+              <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl print:text-xl">
+                Vasiliki Doropoulou
+              </h1>
+              <p className="mt-3 text-[var(--color-ink-muted)] text-sm tracking-wide uppercase print:mt-0.5">
+                Product Engineer · Paris, France
+              </p>
+            </div>
+            <PrintButton />
           </header>
 
           <div className="space-y-10 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)] print:space-y-2 print:text-xs print:leading-snug">
