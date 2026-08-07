@@ -87,9 +87,9 @@ export default function BioPage() {
     <div className="py-16 print:py-0">
       <Container size="reading">
         <article>
-          <header className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end print:mb-2">
+          <header className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-start print:mb-2">
             <div>
-              <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl print:text-xl">
+              <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl print:text-2xl">
                 Vasiliki Doropoulou
               </h1>
               <p className="mt-3 text-[var(--color-ink-muted)] text-sm tracking-wide uppercase print:mt-0.5">
@@ -99,7 +99,7 @@ export default function BioPage() {
             <PrintButton />
           </header>
 
-          <div className="space-y-10 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)] print:space-y-2 print:text-xs print:leading-snug">
+          <div className="space-y-10 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)] print:space-y-2 print:text-sm print:leading-snug">
 
             <p>
               Full-stack engineer with a strong product and UX focus. I build end-to-end product features
@@ -127,7 +127,7 @@ export default function BioPage() {
             <hr className="border-t border-[var(--color-border)]" />
 
             <section>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-8 print:text-sm print:mb-1">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-8 print:text-base print:mb-1">
                 Experience
               </h2>
               <div className="space-y-10 print:space-y-3">
@@ -148,10 +148,10 @@ export default function BioPage() {
                       </div>
                       <span className="text-sm text-[var(--color-ink-muted)] shrink-0">{role.period}</span>
                     </div>
-                    <p className="text-[var(--color-ink-muted)] mb-3 text-[0.9375rem] print:mb-1">{role.description}</p>
+                    <p className="text-[var(--color-ink-muted)] mb-3 text-[0.9375rem] print:mb-1 print:text-sm">{role.description}</p>
                     <ul className="space-y-1.5 pl-0 list-none print:space-y-0.5">
                       {role.highlights.map((item) => (
-                        <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)] print:gap-1.5">
+                        <li key={item} className="flex gap-3 text-[0.9375rem] print:text-sm text-[var(--color-ink-muted)] print:gap-1.5">
                           <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
                           {item}
                         </li>
@@ -165,7 +165,7 @@ export default function BioPage() {
             <hr className="border-t border-[var(--color-border)] print:hidden" />
 
             <section className="print:break-before-page">
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-sm print:mb-1">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-base print:mb-1">
                 Skills
               </h2>
               <ul className="space-y-3 pl-0 list-none print:space-y-0.5">
@@ -181,7 +181,7 @@ export default function BioPage() {
             <hr className="border-t border-[var(--color-border)]" />
 
             <section>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-sm print:mb-1">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-base print:mb-1">
                 Education
               </h2>
               <div className="space-y-6 print:space-y-1">
@@ -191,7 +191,7 @@ export default function BioPage() {
                       <span className="font-medium text-[var(--color-ink)]">{edu.degree}</span>
                       <span className="text-sm text-[var(--color-ink-muted)] shrink-0">{edu.period}</span>
                     </div>
-                    <p className="text-[var(--color-ink-muted)] text-[0.9375rem]">{edu.school}</p>
+                    <p className="text-[var(--color-ink-muted)] text-[0.9375rem] print:text-sm">{edu.school}</p>
                     {edu.note && (
                       <p className="text-[var(--color-ink-muted)] text-sm mt-1 italic">{edu.note}</p>
                     )}
@@ -203,12 +203,12 @@ export default function BioPage() {
             <hr className="border-t border-[var(--color-border)]" />
 
             <section>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-sm print:mb-1">
+              <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mb-6 print:text-base print:mb-1">
                 Training
               </h2>
               <ul className="space-y-2 pl-0 list-none print:space-y-0.5">
                 {TRAINING.map((item) => (
-                  <li key={item} className="flex gap-3 text-[0.9375rem] text-[var(--color-ink-muted)] print:gap-1.5">
+                  <li key={item} className="flex gap-3 text-[0.9375rem] print:text-sm text-[var(--color-ink-muted)] print:gap-1.5">
                     <span className="mt-[0.6em] w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
                     {item}
                   </li>
