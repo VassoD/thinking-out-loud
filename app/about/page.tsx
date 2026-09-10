@@ -22,7 +22,7 @@ export default function AboutPage() {
           <div className="space-y-6 text-[1.0625rem] leading-[1.85] text-[var(--color-ink)]">
             <p>
               I am Vasiliki Doropoulou. Product engineer and technical co-founder, based in Paris.
-              I am Greek, which probably explains the Aristotle references.
+              I am Greek, which probably explains the references to Greek philosophers.
             </p>
 
             <p>
