@@ -17,12 +17,18 @@ export default function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Footer navigation" className="flex items-center gap-5">
+          <nav aria-label="Footer navigation" className="flex flex-wrap items-center gap-5">
             <Link
               href="/writing"
               className="text-sm text-[var(--color-ink-faint)] transition-colors hover:text-[var(--color-ink)]"
             >
               Writing
+            </Link>
+            <Link
+              href="/portfolio"
+              className="text-sm text-[var(--color-ink-faint)] transition-colors hover:text-[var(--color-ink)]"
+            >
+              Portfolio
             </Link>
             <Link
               href="/about"

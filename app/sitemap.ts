@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/posts'
 import { SITE_CONFIG } from '@/lib/seo'
+import { portfolioProjects } from '@/content/portfolio'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${base}/writing`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${base}/portfolio`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ]
 
@@ -19,5 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  return [...staticRoutes, ...postRoutes]
+  const portfolioRoutes: MetadataRoute.Sitemap = portfolioProjects.map(({ slug }) => ({
+    url: `${base}/portfolio/${slug}`,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
+
+  return [...staticRoutes, ...portfolioRoutes, ...postRoutes]
 }

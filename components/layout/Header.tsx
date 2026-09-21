@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { href: '/writing', label: 'Writing' },
+  { href: '/portfolio', label: 'Portfolio' },
   { href: '/about', label: 'About' },
 ] as const
 
@@ -17,7 +18,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)] backdrop-blur-sm print:hidden">
       <Container>
-        <div className="flex h-14 items-center justify-between">
+        <div className="flex min-h-14 flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3 sm:h-14 sm:flex-nowrap sm:py-0">
           <Link
             href="/"
             className="font-serif text-lg font-semibold tracking-tight text-[var(--color-ink)] transition-opacity hover:opacity-70"
@@ -26,11 +27,12 @@ export default function Header() {
             thinking out loud
           </Link>
 
-          <nav aria-label="Main navigation" className="flex items-center gap-6">
+          <nav aria-label="Main navigation" className="flex items-center gap-4 sm:gap-6">
             {NAV_LINKS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
+                aria-current={pathname.startsWith(href) ? 'page' : undefined}
                 className={cn(
                   'text-sm transition-colors',
                   pathname.startsWith(href)
