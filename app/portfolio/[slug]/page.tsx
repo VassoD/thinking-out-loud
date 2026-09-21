@@ -36,6 +36,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <p className="portfolio-eyebrow">{project.kind} · {project.discipline}</p>
             <h1 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">{project.title}</h1>
             <p className="max-w-xl text-lg leading-relaxed text-[var(--color-ink-muted)]">{project.intro}</p>
+            {project.contribution && <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-muted)]"><span className="font-medium text-[var(--color-ink)]">My role. </span>{project.contribution}</p>}
           </header>
 
           {project.visual === 'signal' ? <SignalStudy /> : project.visual === 'resonance' ? <ResonanceStudy /> : project.visual === 'map' ? <SpotsPreview /> : <ProjectVisual variant={project.visual} />}
