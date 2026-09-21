@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Container from '@/components/layout/Container'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = buildMetadata({
   title: 'About',
-  description: 'Vasiliki Doropoulou. Product engineer, technical co-founder, and UX thinker based in Paris.',
+  description: 'Vasiliki Doropoulou. Product engineer and technical co-founder in Paris. What I write about, and what I like to design and build.',
   path: '/about',
 })
 
 export default function AboutPage() {
   return (
     <div className="py-16">
-      <Container size="reading">
+      <Container>
         <article>
           <header className="mb-12">
             <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-5xl">
@@ -85,6 +86,31 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
+
+            <hr className="border-t border-[var(--color-border)] my-10" />
+
+            <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)] mt-10 mb-4">
+              What I like to design and build
+            </h2>
+
+            <p>
+              Product interfaces that make complicated work feel clear. I like working across design
+              and development, from the first flow to the smallest interaction.
+            </p>
+
+            <p>
+              AI tools people can question and steer. Creative tools that turn sound, colour, and
+              motion into something you can play with.
+            </p>
+
+            <p>
+              <Link
+                href="/portfolio"
+                className="text-[var(--color-accent)] underline underline-offset-2 decoration-[var(--color-accent-muted)] hover:decoration-[var(--color-accent)] transition-colors"
+              >
+                Selected work <span aria-hidden="true">→</span>
+              </Link>
+            </p>
 
             <hr className="border-t border-[var(--color-border)] my-10" />
 

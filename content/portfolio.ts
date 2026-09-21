@@ -101,7 +101,7 @@ export const portfolioProjects: PortfolioProject[] = [
     discipline: 'Developer experience',
     summary: 'A room full of requirements. One brief an agent can use.',
     intro: 'Teams contradict themselves. Coding agents inherit the contradiction. This shared room makes the disagreement visible before it becomes code.',
-    contribution: 'I brought the idea and built most of the prototype with the hackathon team.',
+    contribution: 'I proposed the concept and developed the prototype with the team.',
     stack: 'Next.js · TypeScript · OpenAI · Zod · Netlify Blobs',
     visual: 'brief',
     sections: [
