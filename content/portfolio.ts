@@ -1,4 +1,4 @@
-export type ProjectVisual = 'news' | 'pitch' | 'light' | 'brief' | 'signal' | 'brand'
+export type ProjectVisual = 'news' | 'pitch' | 'light' | 'brief' | 'map' | 'signal' | 'resonance'
 
 export interface PortfolioProject {
   slug: string
@@ -92,6 +92,25 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
   },
   {
+    slug: 'spots',
+    title: 'Spots',
+    kind: 'Side project',
+    discipline: 'Maps + product design',
+    summary: 'Scattered saved places. One map.',
+    intro: 'Places saved across different accounts, brought together. Drop in Google Takeout exports. Get one searchable map, with the duplicates removed.',
+    stack: 'Next.js · TypeScript · Leaflet · Google Places · IndexedDB',
+    visual: 'map',
+    sections: [
+      { title: 'The question', text: 'Saving a place is easy. Finding it again, across several accounts and years of lists, is harder. The collection needed one home.' },
+      { title: 'The decision', text: 'Keep the list and the map in agreement. A filter changes both. Selecting a place moves the map to it. Add another export without starting again.' },
+      { title: 'The build', text: 'A Next.js app that reads Takeout files, merges saved places, and groups them by city and category. The map uses Leaflet. The collection persists in the browser, so the next visit starts where the last one ended.' },
+    ],
+    takeaway: 'A saved place should be easy to find again.',
+    links: [
+      { label: 'Source', href: 'https://github.com/VassoD/spots' },
+    ],
+  },
+  {
     slug: 'signal',
     title: 'Signal',
     kind: 'Self-initiated concept',
@@ -109,20 +128,20 @@ export const portfolioProjects: PortfolioProject[] = [
     links: [],
   },
   {
-    slug: 'common-form',
-    title: 'Common Form',
+    slug: 'resonance',
+    title: 'Resonance',
     kind: 'Self-initiated concept',
-    discipline: 'Brand system + creative tooling',
-    summary: 'A few words in. A visual language with rules.',
-    intro: 'A small brand tool for an imaginary audio product. One set of rules makes a poster, a social tile, and a mark.',
-    stack: 'React · TypeScript · SVG · Design tokens',
-    visual: 'brand',
+    discipline: 'Brand + motion + creative tooling',
+    summary: 'A voice becomes a visual language.',
+    intro: 'A playable identity for an imaginary audio platform. One voice drives the artwork. The same visual rules carry it across a poster, a social tile, and a documentation cover.',
+    stack: 'React · TypeScript · HTML Audio · SVG · Design tokens',
+    visual: 'resonance',
     sections: [
-      { title: 'The question', text: 'How do you let a team make new assets without asking them to reinvent the identity each time?' },
-      { title: 'The decision', text: 'Keep the type, spacing, and palette constrained. Let the brief change the rhythm. A shared generative motif carries the identity across formats.' },
-      { title: 'The build', text: 'A working concept built for this portfolio. A short brief maps to a palette and a repeatable pattern. Change the format, vary the composition, export an SVG. Generation is local and rule-based; connecting an AI model is a possible next step.' },
+      { title: 'The question', text: 'An audio platform has little to photograph. How can its identity make the invisible product tangible, and still work when the sound is off?' },
+      { title: 'The decision', text: 'Let the voice move the mark. Keep the palette and typography fixed. Freeze any moment and the same shape becomes a brand asset. Sound, words, and data are three views of one sample.' },
+      { title: 'The build', text: 'A self-initiated concept, grown from Common Form. The bundled voice is synthetic; its measured amplitude drives the motion. Captions are authored, not live transcription. A short brief changes the geometry, and every format exports as SVG. The visual generator is rule-based.' },
     ],
-    takeaway: 'The system makes room for variation. The rules keep it recognisable.',
+    takeaway: 'The voice changes. The identity holds.',
     links: [],
   },
 ]

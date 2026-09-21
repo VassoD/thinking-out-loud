@@ -4,6 +4,20 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/portfolio/pitch-roast',
+        destination: '/portfolio/pitchmate',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/common-form',
+        destination: '/portfolio/resonance',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

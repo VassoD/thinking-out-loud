@@ -1,0 +1,92 @@
+.resonance-experience {
+  --res-line: color-mix(in srgb, var(--res-ink) 22%, transparent);
+  --res-muted: color-mix(in srgb, var(--res-ink) 78%, var(--res-paper));
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--res-paper);
+  color: var(--res-ink);
+}
+.resonance-experience :focus-visible { outline-color: var(--res-accent); }
+.resonance-masthead, .resonance-colophon { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 20px 32px; font-family: var(--font-geist-mono, monospace); font-size: 10px; }
+.resonance-masthead { border-bottom: 1px solid var(--res-line); }
+.resonance-masthead > :first-child { font-family: Georgia, serif; font-size: 20px; letter-spacing: -0.04em; }
+.resonance-masthead > :last-child { align-self: center; }
+.resonance-hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 52px 32px 40px; }
+.resonance-kicker { margin-bottom: 18px; font-family: var(--font-geist-mono, monospace); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--res-accent); }
+.resonance-hero h2 { font-family: Georgia, serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 400; line-height: 0.98; letter-spacing: -0.06em; }
+.resonance-hero h2 em, .resonance-studio h3 em { font-weight: 400; color: var(--res-accent); }
+.resonance-hero-copy > p:last-child { margin-top: 24px; font-size: 14px; line-height: 1.8; }
+.resonance-mark { min-width: 0; text-align: center; }
+.resonance-mark svg { display: block; width: 100%; height: auto; }
+.resonance-mark > span { display: block; margin-top: 8px; font-family: var(--font-geist-mono, monospace); font-size: 9px; letter-spacing: 0.03em; }
+.resonance-player { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 24px; padding: 22px 32px; border-top: 1px solid var(--res-line); border-bottom: 1px solid var(--res-line); }
+.resonance-play { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 12px; padding: 10px 16px; background: var(--res-ink); color: var(--res-paper); font-size: 12px; white-space: nowrap; }
+.resonance-play:hover { background: var(--res-accent); }
+.resonance-play > span { font-size: 10px; }
+.resonance-scrubber { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.resonance-scrubber input { width: 100%; min-width: 40px; height: 28px; accent-color: var(--res-accent); cursor: pointer; }
+.resonance-scrubber > span { flex-shrink: 0; font-family: var(--font-geist-mono, monospace); font-size: 10px; font-variant-numeric: tabular-nums; }
+.resonance-text-button { padding: 10px 0; font-size: 10px; text-decoration: underline; text-underline-offset: 4px; }
+.resonance-error { padding: 14px 32px; font-size: 13px; color: var(--res-accent); }
+.resonance-error a { text-decoration: underline; }
+.resonance-inspector { padding: 24px 32px; }
+.resonance-inspector-header, .resonance-asset-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.resonance-inspector-header > span, .resonance-asset-header > span { font-family: var(--font-geist-mono, monospace); font-size: 9px; }
+.resonance-views { display: flex; gap: 16px; }
+.resonance-views button { min-height: 36px; border-bottom: 1px solid transparent; font-size: 11px; color: var(--res-muted); }
+.resonance-views button[aria-pressed='true'] { border-color: var(--res-accent); color: var(--res-ink); }
+.resonance-reading { display: flex; flex-direction: column; justify-content: center; min-height: 218px; padding: 20px 0; }
+.resonance-sound svg { display: block; width: 100%; height: 96px; color: var(--res-accent); }
+.resonance-sound p { margin-top: 22px; font-family: Georgia, serif; font-size: 22px; }
+.resonance-transcript { display: grid; gap: 6px; }
+.resonance-transcript button { display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: baseline; gap: 12px; padding: 8px 0; text-align: left; font-family: Georgia, serif; font-size: 23px; color: var(--res-muted); }
+.resonance-transcript button > span { font-family: var(--font-geist-mono, monospace); font-size: 9px; }
+.resonance-transcript button.is-current { color: var(--res-accent); }
+.resonance-data { max-height: 228px; overflow: auto; padding: 16px; background: color-mix(in srgb, var(--res-ink) 5%, var(--res-paper)); font-family: var(--font-geist-mono, monospace); font-size: 11px; line-height: 1.65; }
+.resonance-sample-note { font-size: 10px; line-height: 1.7; color: var(--res-muted); }
+.resonance-studio { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 40px 32px 32px; border-top: 1px solid var(--res-line); }
+.resonance-studio-heading > span { font-family: var(--font-geist-mono, monospace); font-size: 9px; }
+.resonance-studio h3 { margin-top: 20px; font-family: Georgia, serif; font-size: 44px; line-height: 1.05; letter-spacing: -0.045em; }
+.resonance-studio-heading p { max-width: 34ch; margin-top: 16px; font-size: 13px; line-height: 1.8; }
+.resonance-outline-button { display: flex; min-height: 42px; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 11px 14px; border: 1px solid var(--res-line); font-size: 11px; text-align: left; }
+.resonance-outline-button:hover { border-color: var(--res-accent); }
+.resonance-studio-controls form { margin-top: 26px; }
+.resonance-studio-controls label { display: block; margin-bottom: 8px; font-size: 11px; }
+.resonance-brief-row { display: flex; gap: 8px; }
+.resonance-brief-row input { width: 100%; min-width: 0; border: 1px solid var(--res-line); border-radius: 0; padding: 10px; background: transparent; color: var(--res-ink); font-size: 16px; }
+.resonance-brief-row button { border: 1px solid var(--res-ink); padding: 10px 12px; font-size: 11px; }
+.resonance-brief-row button:disabled { opacity: 0.45; cursor: not-allowed; }
+.resonance-studio-controls form p { margin-top: 8px; font-size: 10px; line-height: 1.7; color: var(--res-muted); }
+.resonance-asset-header { padding: 8px 32px 20px; }
+.resonance-asset { display: flex; min-height: 390px; justify-content: center; align-items: center; margin: 0 32px; padding: 24px; background: color-mix(in srgb, var(--res-ink) 8%, var(--res-paper)); }
+.resonance-asset svg { display: block; max-width: 100%; max-height: 440px; width: auto; height: auto; border: 1px solid var(--res-line); box-shadow: 0 8px 24px color-mix(in srgb, var(--res-ink) 10%, transparent); }
+.resonance-export { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 24px 32px 32px; }
+.resonance-export p { flex: 1; min-width: 180px; font-size: 11px; line-height: 1.7; color: var(--res-muted); }
+.resonance-colophon { border-top: 1px solid var(--res-line); font-size: 9px; color: var(--res-muted); }
+
+@media (max-width: 639px) {
+  .resonance-masthead, .resonance-colophon { padding: 18px; }
+  .resonance-hero { grid-template-columns: 1fr; gap: 16px; padding: 32px 20px 24px; }
+  .resonance-hero h2 { font-size: 54px; }
+  .resonance-hero-copy > p:last-child { margin-top: 18px; font-size: 13px; }
+  .resonance-mark { width: 100%; max-width: 300px; margin: 0 auto; }
+  .resonance-mark > span { margin-top: 0; }
+  .resonance-player { grid-template-columns: 1fr auto; gap: 12px; padding: 18px; }
+  .resonance-player > .resonance-play { justify-self: start; }
+  .resonance-scrubber { grid-row: 2; grid-column: 1 / -1; }
+  .resonance-text-button { grid-column: 2; grid-row: 1; }
+  .resonance-inspector { padding: 20px 18px; }
+  .resonance-reading { min-height: 234px; }
+  .resonance-transcript button { grid-template-columns: 28px minmax(0, 1fr); font-size: 20px; gap: 6px; }
+  .resonance-studio { grid-template-columns: 1fr; gap: 26px; padding: 28px 18px; }
+  .resonance-studio h3 { font-size: 38px; }
+  .resonance-asset-header { padding: 0 18px 18px; }
+  .resonance-asset { min-height: 210px; margin: 0 18px; padding: 12px; }
+  .resonance-export { padding: 20px 18px 28px; }
+  .resonance-error { padding: 12px 18px; }
+}
+
+@media print {
+  .resonance-player, .resonance-studio-controls, .resonance-export { display: none; }
+  .resonance-experience { break-inside: avoid; }
+}

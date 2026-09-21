@@ -3,9 +3,11 @@ import { notFound } from 'next/navigation'
 import Container from '@/components/layout/Container'
 import ProjectVisual from '@/components/portfolio/ProjectVisual'
 import SignalStudy from '@/components/portfolio/SignalStudy'
-import BrandStudy from '@/components/portfolio/BrandStudy'
+import ResonanceStudy from '@/components/portfolio/ResonanceStudy'
+import SpotsPreview from '@/components/portfolio/SpotsPreview'
 import { portfolioProjects } from '@/content/portfolio'
 import { buildMetadata } from '@/lib/seo'
+import '@/styles/resonance.css'
 
 export const dynamicParams = false
 
@@ -27,7 +29,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="py-12 sm:py-16">
-      <Container>
+      <Container size={project.visual === 'resonance' ? 'wide' : 'default'}>
         <Link href="/portfolio" className="portfolio-text-link text-sm"><span aria-hidden="true">← </span>Portfolio</Link>
         <article className="mt-10">
           <header className="mb-8 space-y-4">
@@ -36,7 +38,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <p className="max-w-xl text-lg leading-relaxed text-[var(--color-ink-muted)]">{project.intro}</p>
           </header>
 
-          {project.visual === 'signal' ? <SignalStudy /> : project.visual === 'brand' ? <BrandStudy /> : <ProjectVisual variant={project.visual} />}
+          {project.visual === 'signal' ? <SignalStudy /> : project.visual === 'resonance' ? <ResonanceStudy /> : project.visual === 'map' ? <SpotsPreview /> : <ProjectVisual variant={project.visual} />}
 
           <div className="mt-10 max-w-reading space-y-8">
             {project.sections.map((section) => (

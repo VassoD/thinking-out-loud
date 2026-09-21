@@ -1,6 +1,10 @@
 import type { ProjectVisual as Visual } from '@/content/portfolio'
+import { resonanceFrame } from '@/lib/resonance'
+import SpotsPreview from './SpotsPreview'
 
 export default function ProjectVisual({ variant }: { variant: Visual }) {
+  if (variant === 'map') return <SpotsPreview compact />
+
   return (
     <div className={`project-visual project-visual-${variant}`} aria-hidden="true">
       {variant === 'news' && (
@@ -66,13 +70,13 @@ export default function ProjectVisual({ variant }: { variant: Visual }) {
           <span className="visual-note visual-note-bottom">confirmed <span className="signal-dot" /> still listening</span>
         </div>
       )}
-      {variant === 'brand' && (
+      {variant === 'resonance' && (
         <>
-          <span className="visual-note">one rule. many forms.</span>
-          <svg viewBox="0 0 360 160" fill="none">
-            {Array.from({ length: 13 }, (_, i) => <ellipse key={i} cx={108 + i * 12} cy="80" rx={16 + i * 1.5} ry={24 + Math.sin(i * 0.3) * 38} stroke="currentColor" strokeWidth="1.2" />)}
+          <span className="visual-note">sound, given shape</span>
+          <svg viewBox="0 0 360 240" fill="none">
+            {resonanceFrame(1.2).paths.map((path, index) => <path key={index} d={path} stroke="currentColor" strokeWidth="1.2" />)}
           </svg>
-          <span className="visual-note visual-note-bottom">common form</span>
+          <span className="visual-note visual-note-bottom">resonance.</span>
         </>
       )}
     </div>
