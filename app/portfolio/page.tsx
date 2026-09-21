@@ -19,7 +19,7 @@ export default function PortfolioPage() {
           <p className="text-lg leading-relaxed text-[var(--color-ink-muted)]">
             Things I build. Audio, interfaces, and small systems that make an abstract idea tangible.
           </p>
-          <p className="text-sm text-[var(--color-ink-muted)]">Two hackathon projects. Two working concepts.</p>
+          <p className="text-sm text-[var(--color-ink-muted)]">Product work, hackathons, and working concepts.</p>
         </header>
 
         <div className="portfolio-list">
@@ -31,7 +31,7 @@ export default function PortfolioPage() {
                   <h2 className="font-serif text-2xl font-semibold tracking-tight">{project.title}</h2>
                   <p className="mt-3 leading-relaxed text-[var(--color-ink-muted)]">{project.summary}</p>
                   <p className="mt-5 text-xs text-[var(--color-ink-muted)]">{project.kind}</p>
-                  <span className="portfolio-read">{project.links.length ? 'Read the project' : 'Try the study'} <span aria-hidden="true">↗</span></span>
+                  <span className="portfolio-read">{project.visual === 'signal' || project.visual === 'brand' ? 'Try the study' : 'Read the project'} <span aria-hidden="true">↗</span></span>
                 </div>
                 <ProjectVisual variant={project.visual} />
               </Link>

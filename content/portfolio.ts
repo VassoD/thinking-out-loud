@@ -1,4 +1,4 @@
-export type ProjectVisual = 'light' | 'brief' | 'signal' | 'brand'
+export type ProjectVisual = 'news' | 'pitch' | 'light' | 'brief' | 'signal' | 'brand'
 
 export interface PortfolioProject {
   slug: string
@@ -15,6 +15,44 @@ export interface PortfolioProject {
 }
 
 export const portfolioProjects: PortfolioProject[] = [
+  {
+    slug: 'inteply',
+    title: 'Inteply',
+    kind: 'Product · Technical co-founder',
+    discipline: 'AI product + developer experience',
+    summary: 'Find the sources. Check the facts. Shape the article.',
+    intro: 'AI research for newsrooms. Source discovery, fact extraction, and article drafting in one workflow. The journalist stays in charge.',
+    stack: 'Next.js · TypeScript · Plate · LLMs · Express · PostgreSQL',
+    visual: 'news',
+    sections: [
+      { title: 'The question', text: 'An article is only as useful as the sources behind it. How do you make AI-assisted research something a journalist can inspect, question, and edit?' },
+      { title: 'The decision', text: 'Keep the research visible. Source selection comes before generation. The draft opens in an editing studio. Each step leaves room for a human decision.' },
+      { title: 'The build', text: 'As technical co-founder, I work across the product and its engineering. A Next.js interface connects research to a rich-text editor. An API playground puts search filters, request examples, and responses in one place.' },
+    ],
+    takeaway: 'The draft is a starting point. The judgement stays human.',
+    links: [
+      { label: 'Open Inteply', href: 'https://inteply.com' },
+    ],
+  },
+  {
+    slug: 'pitchmate',
+    title: 'PitchMate',
+    kind: 'Team hackathon project',
+    discipline: 'Voice + interaction',
+    summary: 'Thirty seconds to pitch. A voice that answers back.',
+    intro: 'A voice-based pitch coach, built with a team at a hackathon. Speak for thirty seconds. Confirm what it heard. Get direct feedback, spoken back.',
+    stack: 'React · TypeScript · Framer Motion · Speechmatics · OpenAI · Supabase',
+    visual: 'pitch',
+    sections: [
+      { title: 'The question', text: 'A pitch is spoken, but most feedback tools start with a text box. What happens when the whole exchange stays in voice?' },
+      { title: 'The decision', text: 'Let the speaker confirm the transcript before the feedback starts. The interface names each state: listening, confirming, thinking, speaking. A moving orb gives the exchange a visual rhythm.' },
+      { title: 'The build', text: 'We built the prototype together during a hackathon. Live transcription feeds an AI critique, then speech synthesis reads it back. The transcript stays visible, and the speaker can re-record before sending.' },
+    ],
+    takeaway: 'Before judging the pitch, make sure you heard it.',
+    links: [
+      { label: 'Open PitchMate', href: 'https://voice-pitchmate.lovable.app/' },
+    ],
+  },
   {
     slug: 'lumen-sonic',
     title: 'Lumen-Sonic',
@@ -46,7 +84,7 @@ export const portfolioProjects: PortfolioProject[] = [
     sections: [
       { title: 'The question', text: 'How does a team give a coding agent one reliable set of instructions? A chat history contains decisions, duplicates, and things nobody agreed to.' },
       { title: 'The decision', text: 'Make “blocked” a real product state. Conflicting requirements become questions for the team. Approval and agreement determine whether the brief is ready.' },
-      { title: 'The build', text: 'A team project for the Codex hackathon. A shared room, a compilation endpoint, schema-validated output, and persistent session activity. The interface and the API speak the same language: draft, blocked, ready.' },
+      { title: 'The build', text: 'We built this together at the Codex hackathon. A shared room, a compilation endpoint, schema-validated output, and persistent session activity. The interface and the API speak the same language: draft, blocked, ready.' },
     ],
     takeaway: 'A clear question is more useful than a confident guess.',
     links: [
