@@ -25,16 +25,16 @@ export default function Footer() {
               Writing
             </Link>
             <Link
-              href="/portfolio"
-              className="text-sm text-[var(--color-ink-faint)] transition-colors hover:text-[var(--color-ink)]"
-            >
-              Portfolio
-            </Link>
-            <Link
               href="/about"
               className="text-sm text-[var(--color-ink-faint)] transition-colors hover:text-[var(--color-ink)]"
             >
               About
+            </Link>
+            <Link
+              href="/portfolio"
+              className="text-sm text-[var(--color-ink-faint)] transition-colors hover:text-[var(--color-ink)]"
+            >
+              Portfolio
             </Link>
             <Link
               href="/bio"
