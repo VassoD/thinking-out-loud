@@ -17,7 +17,7 @@ export default function PortfolioPage() {
         <header className="mb-12 max-w-xl space-y-4">
           <h1 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">Portfolio</h1>
           <p className="text-lg leading-relaxed text-[var(--color-ink-muted)]">
-            Things I build. Audio, interfaces, and small systems that make an abstract idea tangible.
+            Things I design and build. Product interfaces, audio, and visual identities.
           </p>
           <p className="text-sm text-[var(--color-ink-muted)]">Product work, hackathons, and working concepts.</p>
         </header>
@@ -31,7 +31,7 @@ export default function PortfolioPage() {
                   <h2 className="font-serif text-2xl font-semibold tracking-tight">{project.title}</h2>
                   <p className="mt-3 leading-relaxed text-[var(--color-ink-muted)]">{project.summary}</p>
                   <p className="mt-5 text-xs text-[var(--color-ink-muted)]">{project.kind}</p>
-                  <span className="portfolio-read">{project.visual === 'signal' || project.visual === 'resonance' ? 'Try the study' : 'Read the project'} <span aria-hidden="true">↗</span></span>
+                  <span className="portfolio-read">{project.visual === 'signal' || project.visual === 'resonance' ? 'Try the study' : 'Read the project'} <span aria-hidden="true">→</span></span>
                 </div>
                 <ProjectVisual variant={project.visual} />
               </Link>

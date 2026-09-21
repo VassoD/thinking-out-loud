@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { href: '/writing', label: 'Writing' },
-  { href: '/portfolio', label: 'Portfolio' },
   { href: '/about', label: 'About' },
+  { href: '/portfolio', label: 'Portfolio' },
 ] as const
 
 export default function Header() {

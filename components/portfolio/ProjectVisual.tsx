@@ -1,10 +1,7 @@
 import type { ProjectVisual as Visual } from '@/content/portfolio'
 import { resonanceFrame } from '@/lib/resonance'
-import SpotsPreview from './SpotsPreview'
 
 export default function ProjectVisual({ variant }: { variant: Visual }) {
-  if (variant === 'map') return <SpotsPreview compact />
-
   return (
     <div className={`project-visual project-visual-${variant}`} aria-hidden="true">
       {variant === 'news' && (
@@ -56,12 +53,48 @@ export default function ProjectVisual({ variant }: { variant: Visual }) {
         </>
       )}
       {variant === 'brief' && (
-        <div className="brief-specimen">
-          <span className="visual-note">requirements → decisions</span>
-          <div className="brief-line">“No new dependencies.”</div>
-          <div className="brief-line">“Install a new library.”</div>
-          <div className="brief-status"><span /> blocked <span className="brief-question">one question to resolve</span></div>
-        </div>
+        <>
+          <span className="visual-note">conflict → question → brief</span>
+          <svg viewBox="0 0 360 160" fill="none">
+            <rect x="24" y="43" width="78" height="26" rx="2" stroke="currentColor" opacity="0.65" />
+            <rect x="24" y="90" width="78" height="26" rx="2" stroke="currentColor" opacity="0.65" />
+            <path d="M 36 54 H 84 M 36 60 H 71 M 36 101 H 73 M 36 107 H 87" stroke="currentColor" opacity="0.55" />
+            <path d="M 103 56 C 127 56, 129 80, 149 80 M 103 103 C 127 103, 129 80, 149 80" stroke="currentColor" opacity="0.5" />
+            <circle cx="172" cy="80" r="22" stroke="currentColor" />
+            <text x="172" y="88" textAnchor="middle" fill="currentColor" fontFamily="Georgia, serif" fontSize="28">?</text>
+            <path d="M 204 80 H 239 M 235 76 L 239 80 L 235 84" stroke="currentColor" strokeDasharray="3 4" opacity="0.5" />
+            <path d="M 251 35 H 306 L 328 57 V 125 H 251 Z M 306 35 V 57 H 328" stroke="currentColor" />
+            <path d="M 263 73 H 313 M 263 84 H 304 M 263 95 H 313" stroke="currentColor" opacity="0.6" />
+            <path d="M 263 110 L 267 114 L 275 106 M 283 110 H 309" stroke="currentColor" />
+          </svg>
+          <span className="visual-note visual-note-bottom">agree before building.</span>
+        </>
+      )}
+      {variant === 'map' && (
+        <>
+          <span className="visual-note">saved places → one map</span>
+          <svg viewBox="0 0 360 160" fill="none">
+            <rect x="24" y="29" width="120" height="104" rx="2" stroke="currentColor" opacity="0.5" />
+            <rect x="25" y="66" width="118" height="29" fill="currentColor" opacity="0.08" />
+            <path d="M 25 67 V 94" stroke="currentColor" strokeWidth="2" />
+            {[51, 81, 111].map((y, index) => (
+              <g key={y} opacity={index === 1 ? 1 : 0.45}>
+                <circle cx="39" cy={y} r="3" fill={index === 1 ? 'currentColor' : 'none'} stroke="currentColor" />
+                <path d={`M 52 ${y - 3} H ${111 - index * 8} M 52 ${y + 4} H ${92 + index * 5}`} stroke="currentColor" />
+              </g>
+            ))}
+            <path d="M 154 81 H 185 M 181 77 L 185 81 L 181 85" stroke="currentColor" opacity="0.6" />
+            <rect x="198" y="29" width="138" height="104" rx="2" stroke="currentColor" opacity="0.5" />
+            <path d="M 216 30 L 206 132 M 253 30 L 241 132 M 297 30 L 316 132 M 199 63 L 335 45 M 199 100 L 335 81 M 213 132 L 335 113" stroke="currentColor" opacity="0.2" />
+            <path d="M 199 121 C 234 100 274 137 335 99" stroke="currentColor" strokeWidth="6" opacity="0.12" />
+            <circle cx="227" cy="51" r="4" stroke="currentColor" opacity="0.65" />
+            <circle cx="307" cy="106" r="4" stroke="currentColor" opacity="0.65" />
+            <circle cx="268" cy="81" r="15" fill="currentColor" opacity="0.08" />
+            <circle cx="268" cy="81" r="10" stroke="currentColor" opacity="0.5" />
+            <circle cx="268" cy="81" r="4" fill="currentColor" />
+          </svg>
+          <span className="visual-note visual-note-bottom">one filter. both views.</span>
+        </>
       )}
       {variant === 'signal' && (
         <div className="signal-specimen">

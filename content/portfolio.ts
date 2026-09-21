@@ -7,6 +7,7 @@ export interface PortfolioProject {
   discipline: string
   summary: string
   intro: string
+  contribution?: string
   stack: string
   visual: ProjectVisual
   sections: { title: string; text: string }[]
@@ -22,18 +23,38 @@ export const portfolioProjects: PortfolioProject[] = [
     discipline: 'AI product + developer experience',
     summary: 'Find the sources. Check the facts. Shape the article.',
     intro: 'AI research for newsrooms. Source discovery, fact extraction, and article drafting in one workflow. The journalist stays in charge.',
+    contribution: 'Technical co-founder. I work across the product and its engineering.',
     stack: 'Next.js · TypeScript · Plate · LLMs · Express · PostgreSQL',
     visual: 'news',
     sections: [
       { title: 'The question', text: 'An article is only as useful as the sources behind it. How do you make AI-assisted research something a journalist can inspect, question, and edit?' },
       { title: 'The decision', text: 'Keep the research visible. Source selection comes before generation. The draft opens in an editing studio. Each step leaves room for a human decision.' },
-      { title: 'The build', text: 'As technical co-founder, I work across the product and its engineering. A Next.js interface connects research to a rich-text editor. An API playground puts search filters, request examples, and responses in one place.' },
+      { title: 'The build', text: 'A Next.js interface connects research to a rich-text editor. An API playground puts search filters, request examples, and responses in one place.' },
     ],
     takeaway: 'The draft is a starting point. The judgement stays human.',
     links: [
+      { label: 'Explore the API playground', href: 'https://inteply.com/try-headlines-api' },
       { label: 'Open Inteply', href: 'https://inteply.com' },
     ],
   },
+  {
+    slug: 'resonance',
+    title: 'Resonance',
+    kind: 'Self-initiated concept',
+    discipline: 'Brand + motion + creative tooling',
+    summary: 'A voice becomes a visual language.',
+    intro: 'A playable identity for an imaginary audio platform. One voice drives the artwork. The same visual rules carry it across a poster, a social tile, and a documentation cover.',
+    stack: 'React · TypeScript · HTML Audio · SVG · Design tokens',
+    visual: 'resonance',
+    sections: [
+      { title: 'The question', text: 'An audio platform has little to photograph. How can its identity make the invisible product tangible, and still work when the sound is off?' },
+      { title: 'The decision', text: 'Let the voice move the mark. Keep the palette and typography fixed. Freeze any moment and the same shape becomes a brand asset. Sound, words, and data are three views of one sample.' },
+      { title: 'The build', text: 'A self-initiated concept, grown from Common Form. The bundled voice is synthetic; its measured amplitude drives the motion. Captions are authored, not live transcription. A short brief changes the geometry, and every format exports as SVG. The visual generator is rule-based.' },
+    ],
+    takeaway: 'The voice changes. The identity holds.',
+    links: [],
+  },
+
   {
     slug: 'pitchmate',
     title: 'PitchMate',
@@ -41,6 +62,7 @@ export const portfolioProjects: PortfolioProject[] = [
     discipline: 'Voice + interaction',
     summary: 'Thirty seconds to pitch. A voice that answers back.',
     intro: 'A voice-based pitch coach, built with a team at a hackathon. Speak for thirty seconds. Confirm what it heard. Get direct feedback, spoken back.',
+    contribution: 'Co-built with the team during the hackathon. We shared the work.',
     stack: 'React · TypeScript · Framer Motion · Speechmatics · OpenAI · Supabase',
     visual: 'pitch',
     sections: [
@@ -79,6 +101,7 @@ export const portfolioProjects: PortfolioProject[] = [
     discipline: 'Developer experience',
     summary: 'A room full of requirements. One brief an agent can use.',
     intro: 'Teams contradict themselves. Coding agents inherit the contradiction. This shared room makes the disagreement visible before it becomes code.',
+    contribution: 'I brought the idea and built most of the prototype with the hackathon team.',
     stack: 'Next.js · TypeScript · OpenAI · Zod · Netlify Blobs',
     visual: 'brief',
     sections: [
@@ -125,23 +148,6 @@ export const portfolioProjects: PortfolioProject[] = [
       { title: 'The build', text: 'An interactive prototype built for this portfolio. Play, pause, and replay a scripted conversation. The sample makes a correction visible; it uses no microphone or speech recognition service.' },
     ],
     takeaway: 'The interface should be as certain as the system. No more.',
-    links: [],
-  },
-  {
-    slug: 'resonance',
-    title: 'Resonance',
-    kind: 'Self-initiated concept',
-    discipline: 'Brand + motion + creative tooling',
-    summary: 'A voice becomes a visual language.',
-    intro: 'A playable identity for an imaginary audio platform. One voice drives the artwork. The same visual rules carry it across a poster, a social tile, and a documentation cover.',
-    stack: 'React · TypeScript · HTML Audio · SVG · Design tokens',
-    visual: 'resonance',
-    sections: [
-      { title: 'The question', text: 'An audio platform has little to photograph. How can its identity make the invisible product tangible, and still work when the sound is off?' },
-      { title: 'The decision', text: 'Let the voice move the mark. Keep the palette and typography fixed. Freeze any moment and the same shape becomes a brand asset. Sound, words, and data are three views of one sample.' },
-      { title: 'The build', text: 'A self-initiated concept, grown from Common Form. The bundled voice is synthetic; its measured amplitude drives the motion. Captions are authored, not live transcription. A short brief changes the geometry, and every format exports as SVG. The visual generator is rule-based.' },
-    ],
-    takeaway: 'The voice changes. The identity holds.',
     links: [],
   },
 ]
