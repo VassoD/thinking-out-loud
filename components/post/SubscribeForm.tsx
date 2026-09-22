@@ -61,7 +61,14 @@ export default function SubscribeForm() {
 
         {status === 'error' && (
           <p className="text-xs text-[var(--color-ink-faint)]">
-            Something went wrong. Try again or email me directly.
+            Something went wrong. Try again or{' '}
+            <a
+              href="mailto:vassidoro@gmail.com"
+              className="underline hover:text-[var(--color-accent)]"
+            >
+              email me directly
+            </a>
+            .
           </p>
         )}
       </div>
