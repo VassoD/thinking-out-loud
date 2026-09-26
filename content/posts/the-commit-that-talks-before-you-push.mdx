@@ -1,0 +1,27 @@
+---
+title: "The Commit That Talks Before You Push"
+excerpt: "One safety net at the hackathon didn't need the model to cooperate. The other did."
+date: "2026-09-27"
+category: "Engineering"
+tags: ["ai", "codex", "hackathon", "git"]
+featured: false
+published: true
+---
+
+You commit. Before you even type push, a message is already sitting in the shared room: your branch, your commit, the files you touched. Nobody wrote it. A git hook did.
+
+---
+
+We built this at a Codex hackathon, for the moment every fast-moving team hits: two people editing the same file without knowing, finding out at a merge conflict instead of before one. The goal was a room that knows what teammates are doing before GitHub does.
+
+Two mechanisms carry that, and they don't trust the same thing.
+
+The first is a post-commit hook. `git config core.hooksPath .githooks` points every commit and push at a script that reads the branch, the commit, the changed files, and posts a note to the room. No prompting, no model involved. It fires whether or not Codex is paying attention, because git always runs the hook.
+
+The second is softer. Codex is told, in a tool description, to call `get_team_activity` before starting work and `share_session_update` after. Real endpoints, real data behind them: sessions, current task, deviations. But it only happens if the model reads the instruction and follows it. Nothing enforces that the way the hook does.
+
+*One of these runs no matter what the model decides. The other is a request.*
+
+---
+
+Put together, a hackathon team gets two kinds of visibility: one it can rely on, one it has to hope for. Solving the merge-conflict problem didn't require Codex to be trustworthy. It required git to be, which it already was.
