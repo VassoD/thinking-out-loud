@@ -52,22 +52,25 @@ export default function ProjectVisual({ variant }: { variant: Visual }) {
           <span className="visual-note visual-note-bottom">a moment, translated.</span>
         </>
       )}
-      {variant === 'brief' && (
+      {variant === 'room' && (
         <>
-          <span className="visual-note">conflict → question → brief</span>
+          <span className="visual-note">three agents → one file</span>
           <svg viewBox="0 0 360 160" fill="none">
-            <rect x="24" y="43" width="78" height="26" rx="2" stroke="currentColor" opacity="0.65" />
-            <rect x="24" y="90" width="78" height="26" rx="2" stroke="currentColor" opacity="0.65" />
-            <path d="M 36 54 H 84 M 36 60 H 71 M 36 101 H 73 M 36 107 H 87" stroke="currentColor" opacity="0.55" />
-            <path d="M 103 56 C 127 56, 129 80, 149 80 M 103 103 C 127 103, 129 80, 149 80" stroke="currentColor" opacity="0.5" />
-            <circle cx="172" cy="80" r="22" stroke="currentColor" />
-            <text x="172" y="88" textAnchor="middle" fill="currentColor" fontFamily="Georgia, serif" fontSize="28">?</text>
-            <path d="M 204 80 H 239 M 235 76 L 239 80 L 235 84" stroke="currentColor" strokeDasharray="3 4" opacity="0.5" />
-            <path d="M 251 35 H 306 L 328 57 V 125 H 251 Z M 306 35 V 57 H 328" stroke="currentColor" />
-            <path d="M 263 73 H 313 M 263 84 H 304 M 263 95 H 313" stroke="currentColor" opacity="0.6" />
-            <path d="M 263 110 L 267 114 L 275 106 M 283 110 H 309" stroke="currentColor" />
+            {[34, 69, 104].map((y, i) => (
+              <g key={y}>
+                <rect x="24" y={y} width="84" height="22" rx="2" stroke="currentColor" opacity={i === 1 ? 0.9 : 0.5} />
+                <path d={`M 36 ${y + 11} H ${74 + i * 8}`} stroke="currentColor" opacity="0.6" />
+                <path d={`M 109 ${y + 11} C 146 ${y + 11}, 150 80, 190 80`} stroke="currentColor" opacity={i === 1 ? 0.7 : 0.35} strokeDasharray={i === 1 ? undefined : '3 4'} />
+              </g>
+            ))}
+            <circle cx="212" cy="80" r="20" stroke="currentColor" />
+            <path d="M 206 71 V 89 M 218 71 V 89" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path d="M 236 80 H 250 M 246 76 L 250 80 L 246 84" stroke="currentColor" opacity="0.5" />
+            <path d="M 262 35 H 311 L 333 57 V 125 H 262 Z M 311 35 V 57 H 333" stroke="currentColor" />
+            <path d="M 274 73 H 320 M 274 84 H 311 M 274 95 H 320" stroke="currentColor" opacity="0.6" />
+            <text x="297" y="116" textAnchor="middle" fill="currentColor" fontFamily="monospace" fontSize="8" letterSpacing="1">auth.ts</text>
           </svg>
-          <span className="visual-note visual-note-bottom">agree before building.</span>
+          <span className="visual-note visual-note-bottom">told before the edit.</span>
         </>
       )}
       {variant === 'map' && (

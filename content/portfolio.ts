@@ -1,4 +1,4 @@
-export type ProjectVisual = 'news' | 'pitch' | 'light' | 'brief' | 'map' | 'signal' | 'resonance'
+export type ProjectVisual = 'news' | 'pitch' | 'light' | 'room' | 'map' | 'signal' | 'resonance'
 
 export interface PortfolioProject {
   slug: string
@@ -95,23 +95,25 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
   },
   {
-    slug: 'codex-team-brief',
-    title: 'Codex Team Brief',
-    kind: 'Team hackathon project',
-    discipline: 'Developer experience',
-    summary: 'A room full of requirements. One brief an agent can use.',
-    intro: 'Teams contradict themselves. Coding agents inherit the contradiction. This shared room makes the disagreement visible before it becomes code.',
-    contribution: 'I proposed the concept and developed the prototype with the team.',
-    stack: 'Next.js · TypeScript · OpenAI · Zod · Netlify Blobs',
-    visual: 'brief',
+    slug: 'teamroom',
+    title: 'teamroom',
+    kind: 'Open-source tool',
+    discipline: 'Developer experience + AI agents',
+    summary: 'Parallel coding agents. One room that knows who is in which file.',
+    intro: 'Claude Code in one worktree, Codex in another, Gemini CLI in a third. Nothing tells them they are changing the same file until the merge. teamroom does.',
+    contribution: 'I designed and built it. It grew out of a Codex hackathon project.',
+    stack: 'TypeScript · Node.js · MCP · Git hooks · CLI',
+    visual: 'room',
     sections: [
-      { title: 'The question', text: 'How does a team give a coding agent one reliable set of instructions? A chat history contains decisions, duplicates, and things nobody agreed to.' },
-      { title: 'The decision', text: 'Make “blocked” a real product state. Conflicting requirements become questions for the team. Approval and agreement determine whether the brief is ready.' },
-      { title: 'The build', text: 'We built this together at the Codex hackathon. A shared room, a compilation endpoint, schema-validated output, and persistent session activity. The interface and the API speak the same language: draft, blocked, ready.' },
+      { title: 'The question', text: 'Agents work fast and alone. A merge conflict is the first time they learn about each other. How do they find out before the edit, not after?' },
+      { title: 'The decision', text: 'Share work that is not pushed yet: uncommitted edits, untracked files, plans that are not code. Before an agent edits a file someone else is changing, pause it once and say who and why. The agent decides. Nothing is blocked for good.' },
+      { title: 'The build', text: 'One command, no server. Worktrees on one machine share a file inside .git. Git hooks report what changed, whether or not the model cooperates. Any MCP agent gets the same news through tool results. A small optional server puts teammates in the same room.' },
     ],
-    takeaway: 'A clear question is more useful than a confident guess.',
+    takeaway: 'Find out at the edit, not at the merge.',
     links: [
-      { label: 'Source', href: 'https://github.com/VassoD/codex-hackathon' },
+      { label: 'Read the docs', href: 'https://teamroom-steel.vercel.app' },
+      { label: 'Source', href: 'https://github.com/VassoD/teamroom' },
+      { label: 'npm', href: 'https://www.npmjs.com/package/teamroom' },
     ],
   },
   {

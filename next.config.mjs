@@ -16,6 +16,11 @@ const nextConfig = {
         destination: '/portfolio/resonance',
         permanent: true,
       },
+      {
+        source: '/portfolio/codex-team-brief',
+        destination: '/portfolio/teamroom',
+        permanent: true,
+      },
     ]
   },
   async headers() {
