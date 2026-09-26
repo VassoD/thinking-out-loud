@@ -3,7 +3,7 @@ title: "The Commit That Talks Before You Push"
 excerpt: "One safety net at the hackathon didn't need the model to cooperate. The other did."
 date: "2026-08-04"
 category: "Engineering"
-tags: ["ai", "codex", "hackathon", "git"]
+tags: ["ai", "codex", "hackathon", "git", "mcp"]
 featured: false
 published: true
 ---
@@ -12,16 +12,55 @@ You commit. Before you even type push, a message is already sitting in the share
 
 ---
 
-We built this at a Codex hackathon, for the moment every fast-moving team hits: two people editing the same file without knowing, finding out at a merge conflict instead of before one. The goal was a room that knows what teammates are doing before GitHub does.
+## The problem
 
-Two mechanisms carry that, and they don't trust the same thing.
+Run three coding agents in parallel, each in its own git worktree. Claude Code refactors auth. Codex builds billing. Gemini CLI fixes tests.
 
-The first is a post-commit hook. `git config core.hooksPath .githooks` points every commit and push at a script that reads the branch, the commit, the changed files, and posts a note to the room. No prompting, no model involved. It fires whether or not Codex is paying attention, because git always runs the hook.
+Each one sees only its own checkout. None of them knows the others exist. Git knows, but it tells you at merge time, after all three have finished.
 
-The second is softer. Codex is told, in a tool description, to call `get_team_activity` before starting work and `share_session_update` after. Real endpoints, real data behind them: sessions, current task, deviations. But it only happens if the model reads the instruction and follows it. Nothing enforces that the way the hook does.
+Two humans would ask each other. Agents don't ask. *The first time they meet is the merge conflict.*
+
+---
+
+## The hackathon version
+
+We built the first answer at a Codex hackathon. Two mechanisms, and they don't trust the same thing.
+
+The first is a post-commit hook. `git config core.hooksPath .githooks` points git at a script that reads the branch and changed files and posts them to the room. No model involved. Once a clone is set up, git runs it on every commit.
+
+The second is softer. Codex is told, in a tool description, to call `get_team_activity` before starting work. It only happens if the model reads the instruction and follows it.
 
 *One of these runs no matter what the model decides. The other is a request.*
 
 ---
 
-Put together, a hackathon team gets two kinds of visibility: one it can rely on, one it has to hope for. Solving the merge-conflict problem didn't require Codex to be trustworthy. It required git to be, which it already was.
+## The catch
+
+The reliable one sees late. A commit is finished work. The request could see a plan before any code exists, if the model follows it.
+
+teamroom grew out of that weekend. It closes both gaps.
+
+---
+
+## How it works
+
+<TeamroomDiagram />
+
+**No server.** Worktrees share one git common dir, so the room lives in `.git/teamroom`. Every checkout on the machine reads and writes the same place. For teammates on other machines, a small optional server replaces it.
+
+**Snapshots, not commits.** A report lists uncommitted edits, untracked files (`git ls-files --others --exclude-standard`) and the agent's plan. Git hooks trigger it on every commit, checkout, merge and rebase. They run in the background and never fail the git command.
+
+**Enforcement where the agent allows it.** Claude Code exposes a `PreToolUse` hook. Before an edit, teamroom checks the file against every other session. On overlap it denies the edit once, with who and why:
+
+```text
+teamroom: src/auth.ts is also being changed in another checkout:
+  - Vasiliki (app-auth on feat/auth), wip just now: moving auth to sessions
+
+This edit was paused once so you can decide.
+```
+
+Retry the same edit and it goes through. Agents without hooks get the same news through MCP: the next teamroom tool result starts with a heads up.
+
+---
+
+The model still chooses what to do next. It no longer chooses whether to know.

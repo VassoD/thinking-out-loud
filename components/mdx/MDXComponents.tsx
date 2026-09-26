@@ -1,9 +1,11 @@
 import type { MDXComponents } from 'mdx/types'
 import { cn } from '@/lib/utils'
 import { StepperDemo } from './StepperDemo'
+import { TeamroomDiagram } from './TeamroomDiagram'
 
 export const mdxComponents: MDXComponents = {
   StepperDemo,
+  TeamroomDiagram,
   img: ({ className, alt = '', ...props }) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -17,19 +19,19 @@ export const mdxComponents: MDXComponents = {
   ),
   h1: ({ className, ...props }) => (
     <h1
-      className={cn('font-serif text-4xl font-semibold tracking-tight leading-tight mt-0 mb-6', className)}
+      className={cn('font-serif text-4xl font-semibold tracking-tight leading-tight mt-0 mb-6 [&>a]:text-inherit [&>a]:no-underline', className)}
       {...props}
     />
   ),
   h2: ({ className, ...props }) => (
     <h2
-      className={cn('font-serif text-2xl font-semibold tracking-tight leading-snug mt-10 mb-4', className)}
+      className={cn('font-serif text-2xl font-semibold tracking-tight leading-snug mt-10 mb-4 [&>a]:text-inherit [&>a]:no-underline', className)}
       {...props}
     />
   ),
   h3: ({ className, ...props }) => (
     <h3
-      className={cn('font-serif text-xl font-semibold tracking-tight leading-snug mt-8 mb-3', className)}
+      className={cn('font-serif text-xl font-semibold tracking-tight leading-snug mt-8 mb-3 [&>a]:text-inherit [&>a]:no-underline', className)}
       {...props}
     />
   ),
