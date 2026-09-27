@@ -111,7 +111,7 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
     takeaway: 'Find out at the edit, not at the merge.',
     links: [
-      { label: 'Read the docs', href: 'https://teamroom-steel.vercel.app' },
+      { label: 'Read the docs', href: 'https://teamroom.vassi.fyi' },
       { label: 'Source', href: 'https://github.com/VassoD/teamroom' },
       { label: 'npm', href: 'https://www.npmjs.com/package/teamroom' },
     ],
