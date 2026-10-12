@@ -1,4 +1,4 @@
-export type ProjectVisual = 'news' | 'pitch' | 'light' | 'room' | 'map' | 'signal' | 'resonance'
+export type ProjectVisual = 'news' | 'pitch' | 'light' | 'room' | 'map' | 'signal' | 'resonance' | 'thread'
 
 export interface PortfolioProject {
   slug: string
@@ -114,6 +114,27 @@ export const portfolioProjects: PortfolioProject[] = [
       { label: 'Read the docs', href: 'https://teamroom.vassi.fyi' },
       { label: 'Source', href: 'https://github.com/VassoD/teamroom' },
       { label: 'npm', href: 'https://www.npmjs.com/package/teamroom' },
+    ],
+  },
+  {
+    slug: 'klosti',
+    title: 'Klosti',
+    kind: 'Open-source tool',
+    discipline: 'Developer experience + AI agents',
+    summary: 'Every rule your coding agents follow. One thread to read them.',
+    intro: 'Claude Code, Codex, Cursor, and Gemini each read their own rule files, skills, hooks, and MCP servers. Spread across home folders and projects, nobody sees them all. Klosti maps them, and finds where they disagree.',
+    contribution: 'I designed and built it: the engine, the CLI, the macOS app, and the brand.',
+    stack: 'TypeScript · Node.js · Tauri · Claude · Next.js',
+    visual: 'thread',
+    sections: [
+      { title: 'The question', text: 'A global rule says one thing. A project rule says the opposite. A skill quietly asks for a third. The agent picks one and nobody notices. How do you see what an agent actually loads, in the order it loads it?' },
+      { title: 'The decision', text: 'Draw load order as a thread. Global, plugins, then project. Rule files are beads on it. A contradiction is a knot that ties the files involved. Fixes happen in place, with a backup and an undo.' },
+      { title: 'The build', text: 'One command: npx klosti. A local scanner reads agent settings and code folders, masking anything that looks like a credential. An AI review, run through your own Claude Code, checks skills against rules and each other. Results are cached by content. A menu bar app watches for changes and says when your setup moves.' },
+    ],
+    takeaway: 'A rule you cannot see is a rule you cannot trust.',
+    links: [
+      { label: 'Source', href: 'https://github.com/VassoD/klosti' },
+      { label: 'npm', href: 'https://www.npmjs.com/package/klosti' },
     ],
   },
   {

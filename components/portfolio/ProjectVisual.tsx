@@ -73,6 +73,20 @@ export default function ProjectVisual({ variant }: { variant: Visual }) {
           <span className="visual-note visual-note-bottom">told before the edit.</span>
         </>
       )}
+      {variant === 'thread' && (
+        <>
+          <span className="visual-note">global → plugins → project</span>
+          <svg viewBox="0 0 360 160" fill="none">
+            <path d="M 24 96 H 336" stroke="currentColor" strokeWidth="1.5" />
+            {[60, 104, 148, 216, 260, 304].map((x, i) => (
+              <circle key={x} cx={x} cy="96" r="6" fill={i === 1 || i === 4 ? 'currentColor' : 'var(--color-surface-elevated)'} stroke="currentColor" opacity={i === 1 || i === 4 ? 1 : 0.6} />
+            ))}
+            <path d="M 104 88 C 120 36, 244 36, 260 88" stroke="currentColor" opacity="0.7" />
+            <circle cx="182" cy="49" r="3" fill="currentColor" />
+          </svg>
+          <span className="visual-note visual-note-bottom">a knot is a clash.</span>
+        </>
+      )}
       {variant === 'map' && (
         <>
           <span className="visual-note">saved places → one map</span>
