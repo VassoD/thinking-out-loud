@@ -1,0 +1,86 @@
+---
+title: "What Was the Agent Told?"
+excerpt: "I asked Claude to remember a rule. I could not tell where it went. So I built a way to see."
+date: "2026-10-12"
+category: "Engineering"
+tags: ["ai", "claude-code", "agents", "tooling"]
+featured: false
+published: true
+---
+
+I asked Claude to remember a rule. It said it saved it.
+
+Saved where? For this folder, or for every project? I did not know. `/memory` shows what loads in the folder I am in, for Claude only. Nothing showed me every folder, or the other agents.
+
+---
+
+## Why I built it
+
+Claude Code keeps rules in at least three places. `~/.claude/CLAUDE.md` loads everywhere. A project's `CLAUDE.md` loads in that repo. And "remember this" often lands in `~/.claude/projects/<folder>/memory/`, which loads only when I open that exact folder.
+
+One rule, no AI attribution in commits, was already in my global file. I still had to repeat it in two projects. Both times, Claude saved it for that folder only.
+
+And Claude is one agent of four. Codex reads `AGENTS.md`, not `CLAUDE.md`. A repo with both gives two agents two rulebooks, unless `CLAUDE.md` imports the other with one line: `@AGENTS.md`. Cursor and Gemini have their own files too. Then come skills picked by their description, plugins I installed once and forgot, hooks, MCP servers.
+
+My Mac had 150 instruction files. 141 were skills. Nobody had ever read them together, including me.
+
+So I built [Klosti](https://klosti.vassi.fyi). Greek for thread.
+
+---
+
+## What it showed
+
+The first answer was the one I wanted. Pick a folder, see every rule, skill and memory that loads there, in order, and where each one came from.
+
+The second was the one I did not expect. *Read together, the rules disagree.*
+
+My global file says mock external dependencies, databases included. The Inteply backend says mock at the service boundary, never at the database. Both load when I write a test there. The agent picks one, and not always the same one.
+
+<KlostiDiagram />
+
+The backend is right. A mocked database returns whatever the test tells it to. Wrong SQL passes. A broken constraint passes.
+
+The global file was nearly two hundred lines of generic best practice I do not remember writing. Written for every project, it was right for none.
+
+Across the whole scan: 22 contradictions, 13 overlapping or duplicate skills.
+
+---
+
+## How it works
+
+<KlostiPipeline />
+
+**One model of load order.** Klosti reads each agent's own formats: CLAUDE.md and AGENTS.md with their imports, the memories Claude saved per folder, SKILL.md files, plugin caches, hooks, MCP config. For every project it works out what loads into the same session, and in what order. It draws that as a thread. A clash becomes a knot.
+
+**A judge that loads nothing.** The review runs Claude Code headless, in an empty temp folder, with no tools, settings, plugins or MCP servers. The rules it judges arrive as text in the prompt, never as its own instructions. Answers come back as JSON, validated against a schema.
+
+```sh
+claude -p --tools "" --setting-sources "" --strict-mcp-config \
+  --disable-slash-commands --no-session-persistence \
+  --output-format json --json-schema "$SCHEMA"
+```
+
+**Quotes, not paraphrase.** First pass: pull each skill's behaviour instructions, quoted exactly. Any quote that does not match its source line is dropped. Second pass: compare those quotes with the rules that load beside them. Every finding cites both lines. This is the one behind the diagram above:
+
+```json
+{
+  "title": "Mock the database or not",
+  "quotes": [
+    { "file": "~/.claude/CLAUDE.md",
+      "text": "Mock external dependencies (APIs, databases)" },
+    { "file": "inteply/backend/CLAUDE.md",
+      "text": "Mock at the service boundary, not at the database level" }
+  ],
+  "happens": "Claude will probably follow the backend file in route tests. It may still mock Supabase or Prisma when unit testing a service, because the global rule allows it."
+}
+```
+
+**Pay once per change.** Results are cached by content hash, and clones of one repo share a key. A rescan only reviews what changed. A dry run prints the calls and tokens first.
+
+**Local by default.** MCP secrets are never copied. Anything that looks like a credential in a hook is masked. A fix edits the file in place, with a backup and an undo.
+
+---
+
+The agents were never confused. They were following instructions no one could see.
+
+*You cannot debug an agent until you can read what it was told.*

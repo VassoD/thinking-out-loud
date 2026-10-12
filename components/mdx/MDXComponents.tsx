@@ -2,10 +2,14 @@ import type { MDXComponents } from 'mdx/types'
 import { cn } from '@/lib/utils'
 import { StepperDemo } from './StepperDemo'
 import { TeamroomDiagram } from './TeamroomDiagram'
+import { KlostiDiagram } from './KlostiDiagram'
+import { KlostiPipeline } from './KlostiPipeline'
 
 export const mdxComponents: MDXComponents = {
   StepperDemo,
   TeamroomDiagram,
+  KlostiDiagram,
+  KlostiPipeline,
   img: ({ className, alt = '', ...props }) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
