@@ -55,8 +55,10 @@ export function getFeaturedPost(): Post | null {
   return posts.find((p) => p.featured) ?? posts[0] ?? null
 }
 
+// A post has one category, so a matching tag also files it under a second one (an Engineering post tagged "ai" shows under AI).
 export function getPostsByCategory(category: Category): Post[] {
-  return getAllPosts().filter((p) => p.category === category)
+  const categoryTag = category.toLowerCase()
+  return getAllPosts().filter((p) => p.category === category || p.tags?.includes(categoryTag))
 }
 
 export function getRelatedPosts(currentSlug: string, category: Category, limit = 3): Post[] {
