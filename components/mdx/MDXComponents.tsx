@@ -4,12 +4,14 @@ import { StepperDemo } from './StepperDemo'
 import { TeamroomDiagram } from './TeamroomDiagram'
 import { KlostiDiagram } from './KlostiDiagram'
 import { KlostiPipeline } from './KlostiPipeline'
+import { KlostiHarness } from './KlostiHarness'
 
 export const mdxComponents: MDXComponents = {
   StepperDemo,
   TeamroomDiagram,
   KlostiDiagram,
   KlostiPipeline,
+  KlostiHarness,
   img: ({ className, alt = '', ...props }) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img

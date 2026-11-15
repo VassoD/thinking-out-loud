@@ -1,0 +1,49 @@
+---
+title: "How to Know Your Harness"
+excerpt: "Same laptop, same Claude, two repos, two different agents. The difference is the harness."
+date: "2026-11-15"
+category: "Engineering"
+tags: ["ai", "claude-code", "agents", "tooling"]
+featured: false
+published: true
+---
+
+Same laptop. Same Claude. In one repo, hooks run the moment a session starts. In the other, whether it mocks the database depends on the folder.
+
+The model did not change. The harness did.
+
+---
+
+## What a harness is
+
+Everything the agent is given before you type: instructions, skills, memory, hooks, tools.
+
+Nobody writes it in one place. It is stacked from three layers: your global files, the plugins you installed, and the repo you are in.
+
+<KlostiHarness />
+
+---
+
+## When each piece loads
+
+Instructions load every session. Skills show only their description until a request matches. Memory loads its index, and a note when it seems relevant. Hooks run on events, whatever the model decides. Tools wait until called.
+
+*What loads every session costs attention every session.*
+
+---
+
+## How to read your own
+
+In one folder, Claude Code can tell you. `/memory` for instructions and notes. `/context` for what fills the window. `/plugin`, `/mcp` and `/hooks` for the rest.
+
+Across every folder, nothing could. So I built [Klosti](https://klosti.vassi.fyi).
+
+---
+
+## What I found in mine
+
+A rule hidden in a memory, repeated in two repos. 112 skill descriptions in one repo, more than Claude may keep in view. One MCP server defined twice, and the hidden copy was the one that won.
+
+Each fix was a move, not a rewrite.
+
+The rule was right. The layer was wrong.
