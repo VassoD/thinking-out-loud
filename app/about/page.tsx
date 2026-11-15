@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Container from '@/components/layout/Container'
 import { buildMetadata } from '@/lib/seo'
 
+const THESIS_URL = 'https://ux-ai-thesis-doropoulou.vercel.app/'
+
 export const metadata: Metadata = buildMetadata({
   title: 'About',
   description: 'Vasiliki Doropoulou. Product engineer and technical co-founder in Paris. What I write about, and what I like to design and build.',
@@ -52,9 +54,22 @@ export default function AboutPage() {
             <p>
               I started as a French Literature student in Athens. Wanted to build a game to teach children French.
               Had no idea how. So I taught myself: Python, design, front-end. That chain led to a Master&apos;s
-              in Digital Creation at Sorbonne Paris Nord and at 42 Paris. My thesis applied AI to UX: NLP that
-              measured how people felt during usability tests.{' '}
+              in Digital Creation at Sorbonne Paris Nord and at 42 Paris.{' '}
               <em>The non-technical background is not a detour. It is why I build differently.</em>
+            </p>
+
+            <p>
+              <a
+                href={THESIS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--color-accent)] underline underline-offset-2 decoration-[var(--color-accent-muted)] hover:decoration-[var(--color-accent)] transition-colors"
+              >
+                My thesis
+              </a>{' '}
+              asked whether AI could read emotion in what people say out loud while they test an interface.
+              It could, close to how UX designers read it.{' '}
+              <em>Reading emotion is not the same as deciding what to change.</em>
             </p>
 
             <p>
