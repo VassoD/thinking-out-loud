@@ -52,7 +52,8 @@ export default function AboutPage() {
             <p>
               I started as a French Literature student in Athens. Wanted to build a game to teach children French.
               Had no idea how. So I taught myself: Python, design, front-end. That chain led to a Master&apos;s
-              in Digital Creation at Sorbonne Paris Nord and at 42 Paris.{' '}
+              in Digital Creation at Sorbonne Paris Nord and at 42 Paris. My thesis applied AI to UX: NLP that
+              measured how people felt during usability tests.{' '}
               <em>The non-technical background is not a detour. It is why I build differently.</em>
             </p>
 
@@ -72,7 +73,6 @@ export default function AboutPage() {
             <ul className="space-y-3 pl-0 list-none">
               {[
                 ['Engineering', 'Frontend architecture, developer experience, software that holds up.'],
-                ['Leadership', 'Decisions with incomplete information. Conditions for good work, not just the work.'],
                 ['UX & Product', 'The contract between builder and user. Correct software is not always human software.'],
                 ['Philosophy', 'Ideas that changed how I see. Aristotle features heavily. Occasionally Stoicism, occasionally something stranger.'],
                 ['Growth', 'What changes and what does not. The longer game.'],
