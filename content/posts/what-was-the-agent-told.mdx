@@ -20,7 +20,7 @@ Claude Code keeps rules in at least three places. `~/.claude/CLAUDE.md` loads ev
 
 One rule, no AI attribution in commits, was already in my global file. I still had to repeat it in two projects. Both times, Claude saved it for that folder only.
 
-And Claude is one agent of four. Codex reads `AGENTS.md`, not `CLAUDE.md`. A repo with both gives two agents two rulebooks, unless `CLAUDE.md` imports the other with one line: `@AGENTS.md`. Cursor and Gemini have their own files too. Then come skills picked by their description, plugins I installed once and forgot, hooks, MCP servers.
+And Claude is not the only agent. Codex and others read `AGENTS.md`, not `CLAUDE.md`. A repo with both gives the agents two rulebooks, unless `CLAUDE.md` imports the other with one line: `@AGENTS.md`. Cursor and Gemini have their own files too. Then come skills picked by their description, plugins I installed once and forgot, hooks, MCP servers.
 
 My Mac had 150 instruction files. 141 were skills. Nobody had ever read them together, including me.
 
@@ -52,7 +52,7 @@ Across the whole scan: 22 contradictions, 13 overlapping or duplicate skills.
 
 **One model of load order.** Klosti reads each agent's own formats: CLAUDE.md and AGENTS.md with their imports, the memories Claude saved per folder, SKILL.md files, plugin caches, hooks, MCP config. For every project it works out what loads into the same session, and in what order. It draws that as a thread. A clash becomes a knot.
 
-**A judge that loads nothing.** The review runs Claude Code headless, in an empty temp folder, with no tools, settings, plugins or MCP servers. The rules it judges arrive as text in the prompt, never as its own instructions. Answers come back as JSON, validated against a schema.
+**A judge that loads nothing.** The review runs Claude Code headless, in an empty temp folder, with no tools, settings, plugins or MCP servers. The rules it judges arrive as text in the prompt, never as its own instructions. Answers come back as JSON, validated against a schema. It judges the agents that read `CLAUDE.md` or `AGENTS.md`. The others are mapped, not judged yet.
 
 ```sh
 claude -p --tools "" --setting-sources "" --strict-mcp-config \
@@ -60,7 +60,7 @@ claude -p --tools "" --setting-sources "" --strict-mcp-config \
   --output-format json --json-schema "$SCHEMA"
 ```
 
-**Quotes, not paraphrase.** First pass: pull each skill's behaviour instructions, quoted exactly. Any quote that does not match its source line is dropped. Second pass: compare those quotes with the rules that load beside them. Every finding cites both lines. This is the one behind the diagram above:
+**Quotes, not paraphrase.** Rule files are compared in one pass: every file that loads in a folder goes in together. Skills take two. First pass: pull each skill's behaviour instructions, quoted exactly. Any quote that does not match its source line is dropped. Second pass: compare those quotes with the rules that load beside them. Every finding cites both lines. The one behind the diagram above came from the rule pass:
 
 ```json
 {
@@ -80,6 +80,8 @@ claude -p --tools "" --setting-sources "" --strict-mcp-config \
 **Local by default.** MCP secrets are never copied. Anything that looks like a credential in a hook is masked. A fix edits the file in place, with a backup and an undo.
 
 ---
+
+Every project gets its own harness. Nobody writes it. It is assembled from a global file, plugins, the repo's rules and skills, and whatever Claude remembered there. You only see it once something puts the layers together.
 
 The agents were never confused. They were following instructions no one could see.
 
