@@ -6,12 +6,11 @@ export default function HeroSection() {
       <Container>
         <div className="max-w-2xl space-y-5 stagger-children">
           <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-[var(--color-ink)] sm:text-5xl">
-            Engineering ideas, human systems, and the space between.
+            Writing so I remember. Building so people can steer.
           </h1>
 
           <p className="text-lg leading-relaxed text-[var(--color-ink-muted)] max-w-xl">
-            A place to document what I am learning, what I am building, and what I am still figuring out.
-            Engineering, UX, leadership, philosophy and the occasional realisation I want to remember before it disappears.
+            Notes on engineering, UX, AI and philosophy. Kept before they disappear. Shared because thinking out loud is an act of taking up space.
           </p>
         </div>
       </Container>
