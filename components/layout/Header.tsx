@@ -3,8 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Container from './Container'
+import BloomMark from '@/components/brand/BloomMark'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import { cn } from '@/lib/utils'
+
+const HEADER_MARK_SIZE = 20
 
 const NAV_LINKS = [
   { href: '/writing', label: 'Writing' },
@@ -21,9 +24,10 @@ export default function Header() {
         <div className="flex min-h-14 flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3 sm:h-14 sm:flex-nowrap sm:py-0">
           <Link
             href="/"
-            className="font-serif text-lg font-semibold tracking-tight text-[var(--color-ink)] transition-opacity hover:opacity-70"
+            className="flex items-center gap-2 font-serif text-lg font-semibold tracking-tight text-[var(--color-ink)] transition-opacity hover:opacity-70"
             aria-label="Thinking Out Loud, home"
           >
+            <BloomMark size={HEADER_MARK_SIZE} className="text-[var(--color-accent)]" />
             thinking out loud
           </Link>
 
