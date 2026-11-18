@@ -23,6 +23,21 @@ export default function ProjectVisual({ variant }: { variant: Visual }) {
           <span className="visual-note visual-note-bottom">the journalist decides.</span>
         </>
       )}
+      {variant === 'gate' && (
+        <>
+          <span className="visual-note">read → count → act</span>
+          <svg viewBox="0 0 360 160" fill="none">
+            {[40, 88, 136, 184].map((x, i) => (
+              <circle key={x} cx={x} cy="80" r="5" stroke="currentColor" fill={i < 3 ? 'currentColor' : 'none'} opacity={0.45 + i * 0.15} />
+            ))}
+            <path d="M 45 80 H 83 M 93 80 H 131 M 141 80 H 179 M 189 80 H 226" stroke="currentColor" opacity="0.5" />
+            <path d="M 236 46 V 114 M 246 46 V 114" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+            <rect x="268" y="64" width="70" height="32" rx="4" stroke="currentColor" opacity="0.6" />
+            <text x="303" y="84" textAnchor="middle" fill="currentColor" fontFamily="monospace" fontSize="8" letterSpacing="1.5" opacity="0.7">CONFIRM</text>
+          </svg>
+          <span className="visual-note visual-note-bottom">the last click is yours.</span>
+        </>
+      )}
       {variant === 'pitch' && (
         <>
           <span className="visual-note">a pitch, heard back</span>

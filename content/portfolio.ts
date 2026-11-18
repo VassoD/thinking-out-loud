@@ -1,4 +1,4 @@
-export type ProjectVisual = 'news' | 'pitch' | 'light' | 'room' | 'map' | 'signal' | 'resonance' | 'thread'
+export type ProjectVisual = 'news' | 'pitch' | 'light' | 'room' | 'map' | 'signal' | 'resonance' | 'thread' | 'gate'
 
 export interface PortfolioProject {
   slug: string
@@ -35,6 +35,28 @@ export const portfolioProjects: PortfolioProject[] = [
     links: [
       { label: 'Explore the API playground', href: 'https://inteply.com/try-headlines-api' },
       { label: 'Open Inteply', href: 'https://inteply.com' },
+    ],
+  },
+  {
+    slug: 'kerdaxis',
+    title: 'Kerdaxis',
+    kind: 'Team hackathon project',
+    discipline: 'AI agents + trust',
+    summary: 'An AI CFO that finds the savings, then waits for you before the last click.',
+    intro: 'An AI CFO for small companies. It reads the bank account, spots the subscriptions nobody uses, and sends an agent to cancel them on the supplier\'s own website. Built at the H Company × 42AI Computer Use Agents Hackathon, November 2026.',
+    contribution: 'Built with a teammate over a weekend. I wrote most of the code.',
+    stack: 'Next.js · TypeScript · Cloudflare Workers · H Company agents · MCP · Linkup',
+    visual: 'gate',
+    sections: [
+      { title: 'The question', text: 'Cancelling a subscription ends with a button that cannot be undone. How do you let an agent do the work and still keep that decision human?' },
+      { title: 'The decision', text: 'Stop the agent in front of the irreversible button. Three separate guards: the mission ends at the final page, a watchdog pauses the agent the moment it gets there, and only a click in the interface can send the go. Voice can prepare an action. It can never approve one.' },
+      { title: 'The build', text: 'The bank is read through an MCP server with every write tool denied. Plain code counts every euro; the model only labels. The agent works in its own cloud browser, and a cancellation counts only once the supplier\'s site confirms it. Visitors without an account watch a real recorded run, replayed at its real timing.' },
+    ],
+    takeaway: 'The agent does the work. The last click stays human.',
+    links: [
+      { label: 'Open Kerdaxis', href: 'https://kerdaxis.com' },
+      { label: 'Try it', href: 'https://app.kerdaxis.com/try' },
+      { label: 'Source', href: 'https://github.com/kevinMPO/kerdaxis' },
     ],
   },
   {
